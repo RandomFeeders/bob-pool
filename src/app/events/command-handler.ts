@@ -41,6 +41,7 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
             ? interaction.locale
             : interaction.guildLocale ?? Locale.EnglishUS;
 
+        injectedInteraction.member.locale = interactionLocale;
         injectedInteraction.member.data = await this.getUserData(injectedInteraction.member.id);
 
         try {

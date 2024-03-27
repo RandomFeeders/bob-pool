@@ -1,8 +1,8 @@
-import { CommandInteraction, GuildMember } from 'discord.js';
+import { CommandInteraction, GuildMember, Locale } from 'discord.js';
 import { DiscordBot } from './discord-bot';
 import { User } from '../database/entities/user.entity';
 
-export type DiscordInteractionMember = GuildMember & { data: User };
+export type DiscordInteractionMember = GuildMember & { data: User; locale: Locale };
 export type DiscordInteraction = CommandInteraction & { client: DiscordBot; member: DiscordInteractionMember };
 
 export enum DiscordCommandCategory {
