@@ -18,14 +18,13 @@
         },
         "ping": {
             "name": "ping",
-            "description": "Show some nerd status from this application."
-        },
-        "locale": {
-            "name": "locale",
-            "description": "Change the locale"
+            "description": "Mostra alguns status de nerd deste aplicativo.",
+            "data": {
+                "initial_message": "〽️ Pingando...",
+                "websocket_ping": "Ping do Websocket: {{value}} ms",
+                "response_ping": "Ping da Resposta: {{value}} ms"
+            }
         }
     },
-    "errors": {
-        "unknown_locale": "Ainda não consigo falar esse idioma! Desculpa :cry:"
-    }
+    "errors": {}
 }

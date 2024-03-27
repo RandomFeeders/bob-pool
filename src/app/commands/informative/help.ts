@@ -23,13 +23,13 @@ export class HelpCommand implements DiscordCommand {
         );
 
         const embed = new EmbedBuilder({
-            title: this.localeService.translate('help_command.title', interaction.member.id),
-            description: this.localeService.translate('help_command.description', interaction.member.id),
+            title: this.localeService.translate('commands.help.data.title', interaction.member.locale),
+            description: this.localeService.translate('commands.help.data.description', interaction.member.locale),
             color: Colors.DarkRed,
         });
 
         for (const category in commandsByCategory) {
-            const categoryName = this.localeService.translate(category, interaction.member.id);
+            const categoryName = this.localeService.translate(category, interaction.member.locale);
 
             embed.addFields({
                 name: categoryName[0].toUpperCase() + categoryName.slice(1),
