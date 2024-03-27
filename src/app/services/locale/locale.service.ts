@@ -30,7 +30,9 @@ export class LocaleService {
         this.isInitialized = true;
     }
 
-    public translate(key: string, locale: string): string {
+    public translate(key: string, locale: string): string;
+    public translate(key: string, locale: string, args?: { [key: string]: unknown }): string;
+    public translate(key: string, locale: string, args?: { [key: string]: unknown }): string {
         if (!this.isInitialized) throw new Error('The locale service was not initialized before hand!');
 
         const validatedLocale = this.availableLocales.includes(locale) ? locale : 'en-US';
@@ -42,6 +44,9 @@ export class LocaleService {
             return deepSearch(properties, object[property]);
         }
 
-        return deepSearch(key?.split('.') ?? [], translations);
+        const result = deepSearch(key?.split('.') ?? [], translations);
+        if (!args || typeof result !== 'string') return result;
+
+        return Object.keys(args).reduce((acc, key) => acc.replaceAll(`{{${key}}}`, `${args[key]}`), result);
     }
 }
