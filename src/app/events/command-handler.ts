@@ -49,7 +49,9 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
         } catch (error: unknown) {
             if (error instanceof LocalizedError) {
                 const message = this.localeService.translate(error.message, interactionLocale);
-                const reply = injectedInteraction.replied ? injectedInteraction.editReply : injectedInteraction.reply;
+                const reply = injectedInteraction.replied
+                    ? (msg: string) => injectedInteraction.editReply(msg)
+                    : (msg: string) => injectedInteraction.reply(msg);
                 await reply(message);
                 return;
             }
