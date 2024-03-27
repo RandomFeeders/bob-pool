@@ -1,0 +1,31 @@
+{
+    "categories": {
+        "administrative": "administrativo",
+        "configuration": "configuração",
+        "funny": "engraçado",
+        "informative": "informativo",
+        "lewd": "tarado",
+        "voice": "voz"
+    },
+    "commands": {
+        "help": {
+            "name": "ajuda",
+            "description": "Mostra a lista de comandos disponíveis.",
+            "data": {
+                "title": "Lista de comandos",
+                "description": "Para uma ajuda mais detalhada use `/help <comando>`."
+            }
+        },
+        "ping": {
+            "name": "ping",
+            "description": "Show some nerd status from this application."
+        },
+        "locale": {
+            "name": "locale",
+            "description": "Change the locale"
+        }
+    },
+    "errors": {
+        "unknown_locale": "Ainda não consigo falar esse idioma! Desculpa :cry:"
+    }
+}
