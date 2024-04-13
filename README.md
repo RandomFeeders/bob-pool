@@ -10,3 +10,18 @@
     <a href="https://randomfeeders.com.br/" rel="noopener" target="_blank">Random Feeders</a>
     discord server.
 </p>
+
+## Description 
+This is the bot used in the Random Feeders discord server.
+
+## Development server 
+Run `yarn start:dev` for a dev server. The application will automatically
+reload if you change any of the source files. 
+
+## Build 
+Run `yarn build` to build
+the project. The build artifacts will be stored in the `dist/` directory. 
+
+## Running unit tests 
+Run `yarn test:unit` to execute the unit tests via
+[Jest](https://jestjs.io/pt-BR/).
