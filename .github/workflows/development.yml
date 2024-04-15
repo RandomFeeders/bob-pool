@@ -1,0 +1,77 @@
+name: Development
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+  workflow_call:
+
+jobs:
+  test:
+    name: Test application
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🔧 Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.0
+
+      - name: "🔧 Setup Yarn"
+        run: |
+          corepack enable
+          corepack prepare yarn@4.1.1 --activate
+          yarn set version 4.1.1
+
+      - name: "📦 Install dependencies"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: install --immutable
+
+      - name: "🔍 Run unit tests"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: test:unit
+
+      - name: "🔍 Run e2e tests"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: test:e2e
+
+  lint:
+    name: Code standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🔧 Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.0
+
+      - name: "🔧 Setup Yarn"
+        run: |
+          corepack enable
+          corepack prepare yarn@4.1.1 --activate
+          yarn set version 4.1.1
+        
+      - name: "📦 Install dependencies"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: install --immutable
+
+      - name: "🔍 ESLint"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: lint

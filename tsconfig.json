@@ -1,0 +1,32 @@
+{
+    "ts-node": {
+        "transpileOnly": true,
+        "require": ["tsconfig-paths/register"]
+    },
+    "compilerOptions": {
+        "lib": ["ES2022"],
+        "target": "ES2022",
+        "module": "CommonJS",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "Node",
+        "baseUrl": "./",
+        "paths": {
+            "@app/*": ["./src/*", "./dist/*"]
+        },
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "removeComments": true,
+        "newLine": "crlf",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true
+    },
+    "include": ["src"],
+    "exclude": []
+}

@@ -1,0 +1,110 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test and lint
+    uses: RandomFeeders/bob-pool/.github/workflows/development.yml@main
+
+  build:
+    name: Build application
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🔧 Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.0
+
+      - name: "🔧 Setup Yarn"
+        run: |
+          corepack enable
+          corepack prepare yarn@4.1.1 --activate
+          yarn set version 4.1.1
+
+      - name: "📦 Install dependencies"
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: install --immutable
+
+      - name: "🚀 Building app"
+        id: build
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: build
+
+      - name: "📂 Production artifacts"
+        if: steps.build.outputs.exit_code == 0
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: |
+            dist
+            package.json
+            tsconfig.json
+            tsconfig.app.json
+            yarn.lock
+
+  publish:
+    name: Publish
+    needs:
+      - test
+      - build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: "📥 Download artifacts"
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+      - name: "📤 Upload to SSH"
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: build/*
+          target: ${{ vars.SSH_PATH }}
+      - name: "🚀 Publish"
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ vars.SSH_PATH }}
+            rimraf dist
+            cp -a ./build/. ./
+            rimraf build
+            chmod -R 777 .
+            
+            runuser -l riven -c "cd ${{ vars.SSH_PATH }} && yarn workspaces focus --production"
+            runuser -l riven -c "pm2 restart \"Bob Pool\""
+
+  cleanup:
+    name: Cleanup
+    needs:
+      - publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "♻️ Remove build artifacts"
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: build

@@ -1,0 +1,32 @@
+{
+    "categories": {
+        "administrative": "administrative",
+        "configuration": "configuration",
+        "funny": "funny",
+        "informative": "informative",
+        "lewd": "lewd",
+        "voice": "voice"
+    },
+    "commands": {
+        "help": {
+            "name": "help",
+            "description": "Shows a list of available commands.",
+            "data": {                
+                "title": "List of comamnds",
+                "description": "For more detailed help use `/help <command>`."
+            }
+        },
+        "ping": {
+            "name": "ping",
+            "description": "Show some nerd status from this application.",
+            "data": {
+                "initial_message": "〽️ Pinging...",
+                "websocket_ping": "Websocket Ping: {{value}} ms",
+                "response_ping": "Response Ping: {{value}} ms"
+            }
+        }
+    },
+    "errors": {
+        "unknown_locale": "I can't talk in this language yet! Sorry :cry:"
+    }
+}
