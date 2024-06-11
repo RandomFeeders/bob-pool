@@ -71,6 +71,19 @@
                 }
             }
         },
+        "volume": {
+            "name": "volume",
+            "description": "Changes the volume.",
+            "data": {
+                "success_message": "Changed volume to: `{{value}}`"
+            },
+            "options": {
+                "value": {
+                    "name": "value",
+                    "description": "Volume value from 1 to 100."
+                }
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
@@ -86,6 +99,7 @@
         "invalid_youtube_playlist": "This youtube playlist url is invalid!",
         "invalid_spotify_url": "This spotify url is invalid!",
         "unsupported_track_url": "Sorry, but I don't have support for this url!",
-        "not_in_voice_yet": "I'm not in a voice channel yet!"
+        "not_in_voice_yet": "I'm not in a voice channel yet!",
+        "invalid_command_option": "Selected option is invalid in this command!"
     }
 }

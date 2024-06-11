@@ -71,6 +71,19 @@
                 }
             }
         },
+        "volume": {
+            "name": "volume",
+            "description": "Altera o volume.",
+            "data": {
+                "success_message": "Alterado volume para: `{{value}}`"
+            },
+            "options": {
+                "value": {
+                    "name": "valor",
+                    "description": "Valor do volume de 1 a 100."
+                }
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            
@@ -86,6 +99,7 @@
         "invalid_youtube_playlist": "Essa url de playlist do youtube é inválida!",
         "invalid_spotify_url": "Essa url do spotify é inválida!",
         "unsupported_track_url": "Desculpe, mas ainda não tenho suporte para essa url!",
-        "not_in_voice_yet": "Eu não estou em um canal de voz ainda!"
+        "not_in_voice_yet": "Eu não estou em um canal de voz ainda!",
+        "invalid_command_option": "A opção selecionada é inválida neste comando!"
     }
 }
