@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { YoutubeVideo } from './models/youtube-video';
 import { YoutubePlaylist } from './models/youtube-playlist';
 import { AudioResource, StreamType, createAudioResource } from '@discordjs/voice';
-import { Streamable } from '@app/library/interfaces/streamable.interface';
+import { Streamable } from '@library/interfaces/streamable.interface';
 
 @Injectable()
 export class YoutubeService implements Streamable {

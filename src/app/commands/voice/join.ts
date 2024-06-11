@@ -1,7 +1,7 @@
-import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/app/models/discord/discord-command';
-import { LocalizedError } from '@app/app/models/locale/localized-error';
-import { DiscordVoiceService } from '@app/app/services/discord/discord-voice';
-import { LocaleService } from '@app/app/services/locale/locale.service';
+import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/models/discord/discord-command';
+import { LocalizedError } from '@app/models/locale/localized-error';
+import { DiscordVoiceService } from '@app/services/discord/discord-voice';
+import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
 
 @Injectable({ scope: Scope.TRANSIENT })

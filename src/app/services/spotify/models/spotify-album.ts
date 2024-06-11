@@ -1,5 +1,5 @@
-import { JsonObject } from '@app/library/json/decorators/json-object';
-import { JsonProperty } from '@app/library/json/decorators/json-property';
+import { JsonObject } from '@library/json/decorators/json-object';
+import { JsonProperty } from '@library/json/decorators/json-property';
 import { SpotifyImage } from './spotify-image';
 
 @JsonObject()

@@ -1,10 +1,10 @@
 import { DynamicModule, INestApplicationContext, Module, Provider } from '@nestjs/common';
-import { DiscordBot } from '../services/discord/discord-bot';
+import { DiscordBot } from '@app/services/discord/discord-bot';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ServicesModule } from '../services/services.module';
+import { ServicesModule } from '@app/services/services.module';
 import { glob } from 'glob';
 import { resolve } from 'path';
-import { DiscordCommand } from '../models/discord/discord-command';
+import { DiscordCommand } from '@app/models/discord/discord-command';
 
 @Module({})
 export class CommandsModule {

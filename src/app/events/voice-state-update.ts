@@ -1,5 +1,5 @@
 import { VoiceState } from 'discord.js';
-import { DiscordEvent } from '../models/discord/discord-event';
+import { DiscordEvent } from '@app/models/discord/discord-event';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

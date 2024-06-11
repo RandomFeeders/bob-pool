@@ -1,4 +1,4 @@
-import { JsonConverter } from '@app/library/json/json-converter';
+import { JsonConverter } from '@library/json/json-converter';
 import { RequestOptions as HttpRequestOptions, OutgoingHttpHeaders, request as httpRequest } from 'http';
 import { request as httpsRequest } from 'https';
 import { WebResponse } from './web-response';

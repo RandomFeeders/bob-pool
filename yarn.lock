@@ -1343,6 +1343,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/libsodium-wrappers@npm:^0":
+  version: 0.7.14
+  resolution: "@types/libsodium-wrappers@npm:0.7.14"
+  checksum: 10c0/4d6da97de60a1f79b2d3bb195ab3051e2216aae9aa70b9e13c2d9fb0675fbb68d57266e82eb80886f7dcbaba2c7b16f14acecb5a6b6ae4fea267b2499f49272c
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 20.12.7
   resolution: "@types/node@npm:20.12.7"
@@ -2081,6 +2088,7 @@ __metadata:
     "@nestjs/testing": "npm:^10.3.9"
     "@nestjs/typeorm": "npm:^10.0.2"
     "@types/jest": "npm:^29.5.12"
+    "@types/libsodium-wrappers": "npm:^0"
     "@types/node": "npm:^20.14.2"
     "@types/uuid": "npm:^9.0.8"
     "@typescript-eslint/eslint-plugin": "npm:^7.13.0"
@@ -2096,6 +2104,7 @@ __metadata:
     ffmpeg-static: "npm:^5.2.0"
     glob: "npm:^10.4.1"
     jest: "npm:^29.7.0"
+    libsodium-wrappers: "npm:^0.7.13"
     mysql2: "npm:^3.10.0"
     nodemon: "npm:^3.1.3"
     prettier: "npm:^3.3.1"
@@ -4381,6 +4390,22 @@ __metadata:
     prelude-ls: "npm:^1.2.1"
     type-check: "npm:~0.4.0"
   checksum: 10c0/effb03cad7c89dfa5bd4f6989364bfc79994c2042ec5966cb9b95990e2edee5cd8969ddf42616a0373ac49fac1403437deaf6e9050fbbaa3546093a59b9ac94e
+  languageName: node
+  linkType: hard
+
+"libsodium-wrappers@npm:^0.7.13":
+  version: 0.7.13
+  resolution: "libsodium-wrappers@npm:0.7.13"
+  dependencies:
+    libsodium: "npm:^0.7.13"
+  checksum: 10c0/3de2c09a41991832333b379f4eefadd3113abb216c5be8d141eb053bbe904a4d529c01a4bbb8f46c1e2a987c3de1fb9adbb0cf7980155822e06504a38dc16cbb
+  languageName: node
+  linkType: hard
+
+"libsodium@npm:^0.7.13":
+  version: 0.7.13
+  resolution: "libsodium@npm:0.7.13"
+  checksum: 10c0/91a65df81e123d8374b1dcfc1214970203139b4ac75c8032cc2ca390c6173f456d15dbdbf8b79115337086fc2f5a3faa8f96625d909a788125b6ead5894cd5f5
   languageName: node
   linkType: hard
 

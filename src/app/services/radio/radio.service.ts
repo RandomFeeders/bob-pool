@@ -1,4 +1,4 @@
-import { Streamable } from '@app/library/interfaces/streamable.interface';
+import { Streamable } from '@library/interfaces/streamable.interface';
 import { AudioResource, StreamType, createAudioResource } from '@discordjs/voice';
 import { Injectable } from '@nestjs/common';
 import { Radio } from './models/radio';

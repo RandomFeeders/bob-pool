@@ -1,5 +1,5 @@
 import { AbstractLogger, LogLevel, LogMessage, QueryRunner } from 'typeorm';
-import { Logger } from '../logger';
+import { Logger } from '@library/log/logger';
 
 export class DatabaseLogger extends AbstractLogger {
     protected writeLog(

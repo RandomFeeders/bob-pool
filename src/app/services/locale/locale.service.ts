@@ -1,46 +1,45 @@
 import { Injectable } from '@nestjs/common';
 import { glob } from 'glob';
-import { Logger } from '../logger';
-import { Locale } from './locale.model';
-import { resolve as pathResolve, parse as pathParse } from 'path';
+import { Logger } from '@library/log/logger';
+import { Locale } from '@app/models/locale/locale.model';
+import { translations } from '@assets/translations/translations';
 
 @Injectable()
 export class LocaleService {
-    private isInitialized: boolean = false;
     private locales: { [key: string]: Locale } = {};
+
+    public constructor() {
+        this.locales = translations;
+        Logger.info('Loaded locales: ' + Object.keys(this.locales).join(', '), 'Locale');
+    }
 
     public get availableLocales(): string[] {
         return Object.keys(this.locales);
     }
 
-    public async initialize(): Promise<void> {
-        if (this.isInitialized) return;
+    public get(locale: string): Locale {
+        const validatedLocale = this.availableLocales.includes(locale) ? locale : 'en-US';
+        return this.locales[validatedLocale];
+    }
 
-        const foundLocales = await glob('*.json', { cwd: __dirname + '/translations' });
-        const result: string[] = [];
-
-        for (const foundLocale of foundLocales) {
-            const locale = await require(pathResolve(__dirname, 'translations', foundLocale));
-            const localeName = pathParse(foundLocale).name;
-            this.locales[localeName] = locale;
-            result.push(localeName);
-        }
-
-        Logger.debug('Loaded locales: ' + result.join(', '), 'Locale');
-        this.isInitialized = true;
+    public getAllTranslations(key: string): { [key: string]: string } {
+        return this.availableLocales.reduce(
+            (acc, locale) => {
+                acc[locale] = this.translate(key, locale);
+                return acc;
+            },
+            {} as { [key: string]: string }
+        );
     }
 
     public translate(key: string, locale: string): string;
     public translate(key: string, locale: string, args?: { [key: string]: unknown }): string;
     public translate(key: string, locale: string, args?: { [key: string]: unknown }): string {
-        if (!this.isInitialized) throw new Error('The locale service was not initialized before hand!');
-
-        const validatedLocale = this.availableLocales.includes(locale) ? locale : 'en-US';
-        const translations = this.locales[validatedLocale];
+        const translations = this.get(locale);
 
         function deepSearch(properties: string[], object: any): any {
             const property = properties.shift();
-            if (!property) return object;
+            if (!property || !object) return object;
             return deepSearch(properties, object[property]);
         }
 

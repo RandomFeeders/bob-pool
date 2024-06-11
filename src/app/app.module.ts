@@ -7,9 +7,11 @@ import { DiscordBot } from './services/discord/discord-bot';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { ServicesModule } from './services/services.module';
 import { LocaleService } from './services/locale/locale.service';
+import { LoggerModule } from '@library/log/nest/nest-logger.module';
 
 @Module({
     imports: [
+        LoggerModule,
         CommandsModule.register(),
         EventsModule,
         ServicesModule,
@@ -41,8 +43,6 @@ export class AppModule implements NestModule {
 
     public async start(): Promise<void> {
         if (!this.app) return;
-
-        await this.localeService.initialize();
 
         const commandsModule = this.app.get<CommandsModule>(CommandsModule);
         await commandsModule.initialize(this.app, this.discordBot);

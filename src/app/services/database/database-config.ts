@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { ConnectionString } from '@app/library/database/connection-string';
+import { ConnectionString } from '@library/database/connection-string';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DatabaseLogger } from './database-logger';
 

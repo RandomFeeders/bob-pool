@@ -1,4 +1,4 @@
-import { JsonConverter } from '@app/library/json/json-converter';
+import { JsonConverter } from '@library/json/json-converter';
 
 class WebResponseContent {
     private buffer: Buffer;
@@ -27,7 +27,7 @@ export class WebResponse {
     }
 
     public get isSuccessStatusCode(): boolean {
-        if (this.statusCode >= 200 || this.statusCode <= 299) return true;
+        if (this.statusCode >= 200 && this.statusCode <= 299) return true;
         return false;
     }
 }

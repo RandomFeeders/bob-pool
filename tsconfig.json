@@ -12,7 +12,9 @@
         "moduleResolution": "Node",
         "baseUrl": "./",
         "paths": {
-            "@app/*": ["./src/*", "./dist/*"]
+            "@app/*": ["./src/app/*", "./dist/app/*"],
+            "@library/*": ["./src/library/*", "./dist/library/*"],
+            "@assets/*": ["./src/assets/*", "./dist/assets/*"],
         },
         "resolveJsonModule": true,
         "allowJs": true,

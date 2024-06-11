@@ -1,4 +1,4 @@
-import { JsonProperty } from '@app/library/json/decorators/json-property';
+import { JsonProperty } from '@library/json/decorators/json-property';
 import { SpotifyPlaylistTrack } from './spotify-playlist-track';
 
 export class SpotifyTrackList {
