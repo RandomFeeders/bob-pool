@@ -1,5 +1,5 @@
 import { JsonObject } from '@app/library/json/decorators/json-object';
-import { DiscordCommandCategory } from '../discord/discord-command';
+import { DiscordCommandCategory } from '../../models/discord/discord-command';
 import { JsonProperty } from '@app/library/json/decorators/json-property';
 
 @JsonObject()

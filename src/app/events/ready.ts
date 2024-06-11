@@ -1,5 +1,5 @@
 import { ActivityType, Client } from 'discord.js';
-import { DiscordEvent } from '../services/discord/discord-event';
+import { DiscordEvent } from '../models/discord/discord-event';
 import { DiscordBot } from '../services/discord/discord-bot';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

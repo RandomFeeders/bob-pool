@@ -24,9 +24,30 @@
                 "websocket_ping": "Websocket Ping: {{value}} ms",
                 "response_ping": "Response Ping: {{value}} ms"
             }
+        },
+        "join": {
+            "name": "join",
+            "description": "Joins your current voice channel.",
+            "data": {
+                "join_message": "Here I come, pal!"
+            }
+        },
+        "leave": {
+            "name": "leave",
+            "description": "Makes me leave current voice channel.",
+            "data": {
+                "leave_message": "Okey dokey, pal!"
+            }
+        },
+        "test": {
+            "name": "test",
+            "description": "Just a test command."
         }
     },
     "errors": {
-        "unknown_locale": "I can't talk in this language yet! Sorry :cry:"
+        "already_in_voice": "I'm already in a voice channel in this server!",
+        "invalid_text_channel": "This text channel is invalid!",
+        "invalid_voice_channel": "Your voice channel is invalid!",
+        "not_same_voice_channel": "It seems to me that we are not on the same voice channel!"
     }
 }

@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import { Injectable } from '@nestjs/common';
-import { WebRequest } from '../web/web-request';
 import { SpotifyTrack } from './models/spotify-track';
 import { SpotifyPlaylist } from './models/spotify-playlist';
 import { SpotifyTrackList } from './models/spotify-track-list';

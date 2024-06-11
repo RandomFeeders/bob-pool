@@ -1,10 +1,10 @@
 import { Interaction, Locale } from 'discord.js';
-import { DiscordEvent } from '../services/discord/discord-event';
+import { DiscordEvent } from '../models/discord/discord-event';
 import { Injectable } from '@nestjs/common';
 import { DiscordBot } from '../services/discord/discord-bot';
-import { DiscordInteraction } from '../services/discord/discord-command';
+import { DiscordInteraction } from '../models/discord/discord-command';
 import { UserRepository } from '../services/database/repositories/user.repository';
-import { LocalizedError } from '../models/localized-error';
+import { LocalizedError } from '../models/locale/localized-error';
 import { LocaleService } from '../services/locale/locale.service';
 import { User } from '../services/database/entities/user.entity';
 import { Logger } from '../services/logger';
@@ -48,10 +48,11 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
             await command.execute(injectedInteraction);
         } catch (error: unknown) {
             if (error instanceof LocalizedError) {
-                const message = this.localeService.translate(error.message, interactionLocale);
+                const message = this.localeService.translate(`errors.${error.message}`, interactionLocale);
                 const reply = injectedInteraction.replied
                     ? (msg: string) => injectedInteraction.editReply(msg)
                     : (msg: string) => injectedInteraction.reply(msg);
+
                 await reply(message);
                 return;
             }

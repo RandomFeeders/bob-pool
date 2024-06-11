@@ -24,7 +24,30 @@
                 "websocket_ping": "Ping do Websocket: {{value}} ms",
                 "response_ping": "Ping da Resposta: {{value}} ms"
             }
+        },
+        "join": {
+            "name": "entrar",
+            "description": "Entra no seu canal de voz atual.",
+            "data": {
+                "join_message": "Opa! É pra já parceiro!"
+            }
+        },
+        "leave": {
+            "name": "sair",
+            "description": "Faz eu sair do canal de voz atual.",
+            "data": {
+                "leave_message": "Tranquilo, parça!"
+            }
+        },
+        "test": {
+            "name": "teste",
+            "description": "Apenas um comando de testes."            
         }
     },
-    "errors": {}
+    "errors": {
+        "already_in_voice": "Eu já estou em um canal de voz nesse servidor!",
+        "invalid_text_channel": "Esse chat de texto é inválido!",
+        "invalid_voice_channel": "O seu chat de voz é inválido!",
+        "not_same_voice_channel": "Me parece que não estamos no mesmo canal de voz!"
+    }
 }

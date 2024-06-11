@@ -10,6 +10,7 @@ export class Activity {
     public id?: number;
 
     @Column({
+        name: 'value',
         type: 'varchar',
         length: 128,
         nullable: false,

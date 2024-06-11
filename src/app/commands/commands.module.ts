@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServicesModule } from '../services/services.module';
 import { glob } from 'glob';
 import { resolve } from 'path';
-import { DiscordCommand } from '../services/discord/discord-command';
+import { DiscordCommand } from '../models/discord/discord-command';
 
 @Module({})
 export class CommandsModule {

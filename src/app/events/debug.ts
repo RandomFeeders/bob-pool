@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DiscordEvent } from '../services/discord/discord-event';
+import { DiscordEvent } from '../models/discord/discord-event';
 import { Logger } from '../services/logger';
 
 @Injectable()
