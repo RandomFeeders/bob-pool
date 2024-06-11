@@ -16,4 +16,12 @@ export class Activity {
         nullable: false,
     })
     public value?: string;
+
+    @Column({
+        name: 'lang',
+        type: 'varchar',
+        length: 8,
+        nullable: false,
+    })
+    public lang?: string;
 }

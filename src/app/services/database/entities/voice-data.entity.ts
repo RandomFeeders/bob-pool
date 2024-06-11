@@ -24,7 +24,7 @@ export class VoiceData {
     })
     public discordGuildId?: string;
 
-    @OneToMany(() => Track, (track) => track.voiceData, { eager: true })
+    @OneToMany(() => Track, (track) => track.voiceData, { eager: true, cascade: ['insert', 'update'] })
     public tracks?: Track[];
 
     @Column({

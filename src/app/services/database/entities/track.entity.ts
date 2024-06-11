@@ -10,13 +10,21 @@ export enum TrackType {
 }
 
 @Entity({
-    name: 'playlist',
+    name: 'track',
 })
 export class Track {
     @PrimaryGeneratedColumn({
         name: 'id',
     })
     public id?: number;
+
+    @Column({
+        name: 'provider_id',
+        type: 'varchar',
+        length: 256,
+        nullable: false,
+    })
+    public providerId?: string;
 
     @ManyToOne(() => User, { eager: true, nullable: false })
     @JoinColumn({ name: 'user_id' })
