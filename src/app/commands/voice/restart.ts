@@ -5,8 +5,8 @@ import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
 
 @Injectable({ scope: Scope.TRANSIENT })
-export class SkipCommand implements DiscordCommand {
-    public name: string = 'skip';
+export class RestartCommand implements DiscordCommand {
+    public name: string = 'restart';
     public category = DiscordCommandCategory.VOICE;
 
     public constructor(
@@ -18,10 +18,10 @@ export class SkipCommand implements DiscordCommand {
         if (!this.voiceService.hasVoiceData(interaction.guildId!)) throw new LocalizedError('not_in_voice_yet');
 
         const voiceData = this.voiceService.getVoiceData(interaction.guildId!)!;
-        voiceData.skip(true);
+        voiceData.play();
 
         await interaction.reply({
-            content: this.localeService.translate('commands.skip.data.success_message', interaction.member.locale),
+            content: this.localeService.translate('commands.restart.data.success_message', interaction.member.locale),
             ephemeral: true,
         });
     }

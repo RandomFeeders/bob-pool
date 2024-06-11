@@ -98,6 +98,13 @@
                 "success_message": "Adeus minha pequenina!"
             }
         },
+        "restart": {
+            "name": "reiniciar",
+            "description": "Reinicia a música atual.",
+            "data": {
+                "success_message": "Bora de novo, porra!"
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            

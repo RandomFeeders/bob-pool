@@ -98,6 +98,13 @@
                 "success_message": "Bye bye little one!"
             }
         },
+        "restart": {
+            "name": "restart",
+            "description": "Restarts the current song.",
+            "data": {
+                "success_message": "I'll fucking do it again!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."

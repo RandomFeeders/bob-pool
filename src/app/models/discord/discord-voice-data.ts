@@ -57,7 +57,6 @@ export class DiscordVoiceData {
         this.player.on('stateChange', (_, state) => {
             if (state.status == 'idle') {
                 this.skip();
-                this.play();
             }
         });
     }
