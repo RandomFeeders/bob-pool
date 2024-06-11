@@ -1,0 +1,126 @@
+{
+    "categories": {
+        "administrative": "administrative",
+        "configuration": "configuration",
+        "funny": "funny",
+        "informative": "informative",
+        "lewd": "lewd",
+        "voice": "voice"
+    },
+    "commands": {
+        "help": {
+            "name": "help",
+            "description": "Shows a list of available commands.",
+            "data": {                
+                "title": "List of comamnds",
+                "description": "For more detailed help use `/help <command>`."
+            }
+        },
+        "ping": {
+            "name": "ping",
+            "description": "Show some nerd status from this application.",
+            "data": {
+                "initial_message": "〽️ Pinging...",
+                "websocket_ping": "Websocket Ping: {{value}} ms",
+                "response_ping": "Response Ping: {{value}} ms"
+            }
+        },
+        "join": {
+            "name": "join",
+            "description": "Joins your current voice channel.",
+            "data": {
+                "join_message": "Here I come, pal!"
+            }
+        },
+        "leave": {
+            "name": "leave",
+            "description": "Makes me leave current voice channel.",
+            "data": {
+                "leave_message": "Okey dokey, pal!"
+            }
+        },
+        "play": {
+            "name": "play",
+            "description": "Makes me start to play a music on current voice channel.",
+            "data": {
+                "embed_title": "🎶 Track Added",
+                "embed_footer": "Requested by {{tag}}"
+            },
+            "options": {
+                "query": {
+                    "name": "query",
+                    "description": "Song url or name."
+                }
+            }
+        },
+        "loop": {
+            "name": "loop",
+            "description": "Changes the loop method.",
+            "data": {
+                "success_message": "Changed loop method to: `{{type}}`"
+            },
+            "options": {
+                "type": {
+                    "name": "type",
+                    "description": "The type of loop.",
+                    "choices": {
+                        "none": "none",
+                        "one": "one",
+                        "all": "all"
+                    }
+                }
+            }
+        },
+        "volume": {
+            "name": "volume",
+            "description": "Changes the volume.",
+            "data": {
+                "success_message": "Changed volume to: `{{value}}`"
+            },
+            "options": {
+                "value": {
+                    "name": "value",
+                    "description": "Volume value from 1 to 100."
+                }
+            }
+        },
+        "shuffle": {
+            "name": "shuffle",
+            "description": "Shuffles the queue.",
+            "data": {
+                "success_message": "Now the queue is as crazy as me!"
+            }
+        },
+        "skip": {
+            "name": "skip",
+            "description": "Skip the current song.",
+            "data": {
+                "success_message": "Bye bye little one!"
+            }
+        },
+        "restart": {
+            "name": "restart",
+            "description": "Restarts the current song.",
+            "data": {
+                "success_message": "I'll fucking do it again!"
+            }
+        },
+        "test": {
+            "name": "test",
+            "description": "Just a test command."
+        }
+    },
+    "errors": {
+        "already_in_voice": "I'm already in a voice channel in this server!",
+        "invalid_text_channel": "This text channel is invalid!",
+        "invalid_voice_channel": "Your voice channel is invalid!",
+        "not_same_voice_channel": "It seems to me that we are not on the same voice channel!",
+        "invalid_youtube_url": "This youtube url is invalid!",
+        "youtube_video_unavailable": "This youtube video is unavailable!",
+        "invalid_youtube_playlist": "This youtube playlist url is invalid!",
+        "invalid_spotify_url": "This spotify url is invalid!",
+        "unsupported_track_url": "Sorry, but I don't have support for this url!",
+        "not_in_voice_yet": "I'm not in a voice channel yet!",
+        "invalid_command_option": "Selected option is invalid in this command!"
+    }
+}

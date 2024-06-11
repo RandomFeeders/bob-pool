@@ -1,10 +1,10 @@
 import { ActivityType, Client } from 'discord.js';
-import { DiscordEvent } from '../services/discord/discord-event';
-import { DiscordBot } from '../services/discord/discord-bot';
+import { DiscordEvent } from '@app/models/discord/discord-event';
+import { DiscordBot } from '@app/services/discord/discord-bot';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Activity } from '../services/database/entities/activity.entity';
+import { Activity } from '@app/services/database/entities/activity.entity';
 
 @Injectable()
 export class ReadyEvent implements DiscordEvent<'ready'> {

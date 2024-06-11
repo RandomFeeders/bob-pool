@@ -3,10 +3,10 @@ import { CommandHandler } from './command-handler';
 import { DebugEvent } from './debug';
 import { ReadyEvent } from './ready';
 import { VoiceStateUpdateEvent } from './voice-state-update';
-import { DiscordBot } from '../services/discord/discord-bot';
+import { DiscordBot } from '@app/services/discord/discord-bot';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Activity } from '../services/database/entities/activity.entity';
-import { ServicesModule } from '../services/services.module';
+import { Activity } from '@app/services/database/entities/activity.entity';
+import { ServicesModule } from '@app/services/services.module';
 
 const events = [CommandHandler, DebugEvent, ReadyEvent, VoiceStateUpdateEvent];
 

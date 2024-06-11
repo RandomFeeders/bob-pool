@@ -1,5 +1,5 @@
-import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/app/services/discord/discord-command';
-import { LocaleService } from '@app/app/services/locale/locale.service';
+import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/models/discord/discord-command';
+import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
 import { Colors, EmbedBuilder } from 'discord.js';
 

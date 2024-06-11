@@ -1,4 +1,4 @@
-import { JsonProperty } from '@app/library/json/decorators/json-property';
+import { JsonProperty } from '@library/json/decorators/json-property';
 
 export class SpotifyUser {
     @JsonProperty('id')

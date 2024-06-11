@@ -1,13 +1,13 @@
 import { Interaction, Locale } from 'discord.js';
-import { DiscordEvent } from '../services/discord/discord-event';
+import { DiscordEvent } from '@app/models/discord/discord-event';
 import { Injectable } from '@nestjs/common';
-import { DiscordBot } from '../services/discord/discord-bot';
-import { DiscordInteraction } from '../services/discord/discord-command';
-import { UserRepository } from '../services/database/repositories/user.repository';
-import { LocalizedError } from '../models/localized-error';
-import { LocaleService } from '../services/locale/locale.service';
-import { User } from '../services/database/entities/user.entity';
-import { Logger } from '../services/logger';
+import { DiscordBot } from '@app/services/discord/discord-bot';
+import { DiscordInteraction } from '@app/models/discord/discord-command';
+import { UserRepository } from '@app/services/database/repositories/user.repository';
+import { LocalizedError } from '@app/models/locale/localized-error';
+import { LocaleService } from '@app/services/locale/locale.service';
+import { User } from '@app/services/database/entities/user.entity';
+import { Logger } from '@library/log/logger';
 
 @Injectable()
 export class CommandHandler implements DiscordEvent<'interactionCreate'> {
@@ -36,22 +36,23 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
         const command = bot.commands[interaction.commandName];
         if (!command) return;
 
-        const injectedInteraction = interaction as DiscordInteraction;
+        const extendedInteraction = interaction as DiscordInteraction;
         const interactionLocale = this.localeService.availableLocales.includes(interaction.locale)
             ? interaction.locale
             : interaction.guildLocale ?? Locale.EnglishUS;
 
-        injectedInteraction.member.locale = interactionLocale;
-        injectedInteraction.member.data = await this.getUserData(injectedInteraction.member.id);
+        extendedInteraction.member.locale = interactionLocale;
+        extendedInteraction.member.data = await this.getUserData(extendedInteraction.member.id);
 
         try {
-            await command.execute(injectedInteraction);
+            await command.execute(extendedInteraction);
         } catch (error: unknown) {
             if (error instanceof LocalizedError) {
-                const message = this.localeService.translate(error.message, interactionLocale);
-                const reply = injectedInteraction.replied
-                    ? (msg: string) => injectedInteraction.editReply(msg)
-                    : (msg: string) => injectedInteraction.reply(msg);
+                const message = this.localeService.translate(`errors.${error.message}`, interactionLocale);
+                const reply = extendedInteraction.replied
+                    ? (msg: string) => extendedInteraction.editReply(msg)
+                    : (msg: string) => extendedInteraction.reply({ content: msg, ephemeral: true });
+
                 await reply(message);
                 return;
             }
