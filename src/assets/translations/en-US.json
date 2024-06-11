@@ -84,6 +84,13 @@
                 }
             }
         },
+        "shuffle": {
+            "name": "shuffle",
+            "description": "Shuffles the queue.",
+            "data": {
+                "success_message": "Now the queue is as crazy as me!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."

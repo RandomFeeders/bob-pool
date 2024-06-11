@@ -84,6 +84,13 @@
                 }
             }
         },
+        "shuffle": {
+            "name": "randomizar",
+            "description": "Aleatoriza a fila.",
+            "data": {
+                "success_message": "Agora a fila ta doidona igual eu!"
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            
