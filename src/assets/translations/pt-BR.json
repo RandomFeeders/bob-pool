@@ -91,6 +91,13 @@
                 "success_message": "Agora a fila ta doidona igual eu!"
             }
         },
+        "skip": {
+            "name": "pular",
+            "description": "Pula a música atual.",
+            "data": {
+                "success_message": "Adeus minha pequenina!"
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            

@@ -91,6 +91,13 @@
                 "success_message": "Now the queue is as crazy as me!"
             }
         },
+        "skip": {
+            "name": "skip",
+            "description": "Skip the current song.",
+            "data": {
+                "success_message": "Bye bye little one!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
