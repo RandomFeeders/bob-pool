@@ -4,7 +4,7 @@ import { User } from '@app/services/database/entities/user.entity';
 import { DiscordCommandOptionBase } from './discord-command-options';
 
 export type DiscordInteractionMember = GuildMember & { data: User; locale: Locale };
-export type DiscordInteraction = CommandInteraction & { client: DiscordBot; member: DiscordInteractionMember; };
+export type DiscordInteraction = CommandInteraction & { client: DiscordBot; member: DiscordInteractionMember };
 
 export enum DiscordCommandCategory {
     'ADMINISTRATIVE' = 'categories.administrative',

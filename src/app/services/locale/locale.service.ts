@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { glob } from 'glob';
 import { Logger } from '@library/log/logger';
 import { Locale } from '@app/models/locale/locale.model';
 import { translations } from '@assets/translations/translations';

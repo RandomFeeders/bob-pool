@@ -3,7 +3,7 @@ import { DiscordCommandStringOption } from '@app/models/discord/discord-command-
 import { DiscordVoiceService } from '@app/services/discord/discord-voice';
 import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
-import { ApplicationCommandOptionBase, Colors, EmbedBuilder, SlashCommandStringOption } from 'discord.js';
+import { Colors, EmbedBuilder } from 'discord.js';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class PlayCommand implements DiscordCommand {
@@ -38,7 +38,7 @@ export class PlayCommand implements DiscordCommand {
                     tag: interaction.member.user.tag,
                 }),
                 iconURL: interaction.member.user.avatarURL({ forceStatic: true })!,
-            }
+            },
         });
 
         await interaction.reply({

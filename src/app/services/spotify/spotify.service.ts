@@ -14,7 +14,7 @@ import { Track } from '../database/entities/track.entity';
 const SPOTIFY_API_ENDPOINT = 'https://api.spotify.com';
 const SPOTIFY_AUTH_ENDPOINT = 'https://accounts.spotify.com';
 
-export type SpotifyUrl = { id: string, type: SpotifyUrlType };
+export type SpotifyUrl = { id: string; type: SpotifyUrlType };
 export type SpotifyUrlType = 'track' | 'playlist';
 
 @Injectable()
@@ -123,16 +123,16 @@ export class SpotifyService {
     }
 
     public async getAudioResource(track: Track, volume: number = 100): Promise<AudioResource> {
-        if (!track.providerId) throw new Error('The next track doesn\'t have a valid id!');
+        if (!track.providerId) throw new Error("The next track doesn't have a valid id!");
 
         const youtubeEquivalent = this.cache.get(track.providerId);
 
-        if (!!youtubeEquivalent) 
-            return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
+        if (!!youtubeEquivalent) return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
 
         const searchResult = await this.youtubeService.search(`${track.artist} - ${track.title}`);
 
-        if (!searchResult || searchResult.length === 0) throw new LocalizedError('Unable to find a track equivalent on youtube.');
+        if (!searchResult || searchResult.length === 0)
+            throw new LocalizedError('Unable to find a track equivalent on youtube.');
 
         this.cache.set(track.providerId, searchResult[0].id);
 

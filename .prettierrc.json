@@ -2,7 +2,6 @@
     "arrowParens": "always",
     "bracketSameLine": true,
     "bracketSpacing": true,
-    "editorconfig": true,
     "endOfLine": "crlf",
     "embeddedLanguageFormatting": "auto",
     "htmlWhitespaceSensitivity": "css",

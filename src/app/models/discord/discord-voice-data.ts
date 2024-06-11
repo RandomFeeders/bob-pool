@@ -1,4 +1,4 @@
-import { Track, TrackType } from '@app/services/database/entities/track.entity';
+import { Track } from '@app/services/database/entities/track.entity';
 import { VoiceDataLoop } from '@app/services/database/entities/voice-data.entity';
 import { AudioPlayer, VoiceConnection, createAudioPlayer, joinVoiceChannel } from '@discordjs/voice';
 import { TextBasedChannel, VoiceBasedChannel } from 'discord.js';

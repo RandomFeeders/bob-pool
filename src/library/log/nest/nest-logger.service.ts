@@ -2,7 +2,6 @@ import { LogLevel, LoggerService } from '@nestjs/common';
 import { Logger } from '@library/log/logger';
 
 export class CustomNestLogger implements LoggerService {
-
     private logLevels: LogLevel[] = [];
 
     private isLogEnabled(level: LogLevel): boolean {
@@ -43,5 +42,4 @@ export class CustomNestLogger implements LoggerService {
     public setLogLevels?(levels: LogLevel[]) {
         this.logLevels = levels;
     }
-
 }

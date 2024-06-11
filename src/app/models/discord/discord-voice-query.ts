@@ -1,14 +1,13 @@
-import { Track, TrackType } from "@app/services/database/entities/track.entity";
-import { User } from "@app/services/database/entities/user.entity";
-import { SpotifyPlaylist } from "@app/services/spotify/models/spotify-playlist";
-import { SpotifyTrack } from "@app/services/spotify/models/spotify-track";
-import { YoutubePlaylist } from "@app/services/youtube/models/youtube-playlist";
-import { YoutubeVideo } from "@app/services/youtube/models/youtube-video";
+import { Track, TrackType } from '@app/services/database/entities/track.entity';
+import { User } from '@app/services/database/entities/user.entity';
+import { SpotifyPlaylist } from '@app/services/spotify/models/spotify-playlist';
+import { SpotifyTrack } from '@app/services/spotify/models/spotify-track';
+import { YoutubePlaylist } from '@app/services/youtube/models/youtube-playlist';
+import { YoutubeVideo } from '@app/services/youtube/models/youtube-video';
 
 type DiscordVoiceQueryType = 'youtube' | 'spotify';
 
 export class DiscordVoiceQuery {
-
     public id?: string;
     public title?: string;
     public author?: string;
@@ -19,13 +18,15 @@ export class DiscordVoiceQuery {
 
     public origin?: YoutubeVideo | YoutubePlaylist | SpotifyTrack | SpotifyPlaylist;
 
-    private constructor() { }
-    
+    private constructor() {}
+
     public static from(video: YoutubeVideo): DiscordVoiceQuery;
     public static from(playlist: YoutubePlaylist): DiscordVoiceQuery;
     public static from(track: SpotifyTrack): DiscordVoiceQuery;
     public static from(playlist: SpotifyPlaylist): DiscordVoiceQuery;
-    public static from(value: YoutubeVideo | YoutubePlaylist | SpotifyTrack | SpotifyPlaylist): DiscordVoiceQuery | null {
+    public static from(
+        value: YoutubeVideo | YoutubePlaylist | SpotifyTrack | SpotifyPlaylist
+    ): DiscordVoiceQuery | null {
         const result = new DiscordVoiceQuery();
         result.origin = value;
 
@@ -84,10 +85,10 @@ export class DiscordVoiceQuery {
         const track = new Track();
 
         const typeMapper = {
-            'youtube': TrackType.Youtube,
-            'spotify': TrackType.Spotify,
-            'unknown': TrackType.Unknown,
-        }
+            youtube: TrackType.Youtube,
+            spotify: TrackType.Spotify,
+            unknown: TrackType.Unknown,
+        };
 
         track.providerId = this.id;
         track.title = this.title;
@@ -101,24 +102,24 @@ export class DiscordVoiceQuery {
     }
 
     public getTracks(user: User): Track[] {
-        if (this.subtype === 'track') return [ this.toTrack(user) ];
+        if (this.subtype === 'track') return [this.toTrack(user)];
         if (this.subtype !== 'playlist') throw new Error('Something went wrong trying to convert to track list!');
 
         if (this.type === 'youtube' && this.origin instanceof YoutubePlaylist)
-            return this.origin.items.map(item => DiscordVoiceQuery.from(item).toTrack(user));
+            return this.origin.items.map((item) => DiscordVoiceQuery.from(item).toTrack(user));
 
-        if (this.type === 'spotify' && this.origin instanceof SpotifyPlaylist) 
-            return this.origin.tracks.items.map(item => DiscordVoiceQuery.from(item.track).toTrack(user));
+        if (this.type === 'spotify' && this.origin instanceof SpotifyPlaylist)
+            return this.origin.tracks.items.map((item) => DiscordVoiceQuery.from(item.track).toTrack(user));
 
         throw new Error('Something went wrong trying to convert to track list!');
     }
 
-    public toString(): string {        
+    public toString(): string {
         const length = this.length ?? 0;
-		const min = Math.floor(length / 60);
-		const sec = length - min * 60;
-		const time = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-		const title = this.type === 'youtube' ? this.title : `${this.author} - ${this.title}`;
-		return `[${title}](${this.url}) \`${time}\``;
+        const min = Math.floor(length / 60);
+        const sec = length - min * 60;
+        const time = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        const title = this.type === 'youtube' ? this.title : `${this.author} - ${this.title}`;
+        return `[${title}](${this.url}) \`${time}\``;
     }
 }

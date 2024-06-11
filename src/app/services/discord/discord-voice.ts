@@ -158,11 +158,9 @@ export class DiscordVoiceService {
         if (tracks.length === 0) return;
 
         for (const track of tracks) {
-            if (track.type === TrackType.Youtube)
-                await this.youtubeService.cacheTrack(track);
+            if (track.type === TrackType.Youtube) await this.youtubeService.cacheTrack(track);
 
-            if (track.type === TrackType.Spotify)
-                await this.spotifyService.cacheTrack(track);
+            if (track.type === TrackType.Spotify) await this.spotifyService.cacheTrack(track);
         }
     }
 }

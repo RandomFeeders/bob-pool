@@ -97,5 +97,5 @@ export class YoutubeService implements Streamable {
         return resource;
     }
 
-    public async cacheTrack(track: Track): Promise<void> {}
+    public async cacheTrack(_track: Track): Promise<void> {}
 }

@@ -1,5 +1,5 @@
 import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/models/discord/discord-command';
-import { DiscordCommandOptionBase, DiscordCommandStringOption } from '@app/models/discord/discord-command-options';
+import { DiscordCommandStringOption } from '@app/models/discord/discord-command-options';
 import { LocalizedError } from '@app/models/locale/localized-error';
 import { VoiceDataLoop } from '@app/services/database/entities/voice-data.entity';
 import { DiscordVoiceService } from '@app/services/discord/discord-voice';

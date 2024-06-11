@@ -37,4 +37,3 @@ export class VoiceData1718138157269 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE \`playlist\``);
     }
 }
-

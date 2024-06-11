@@ -41,4 +41,3 @@ export class Initial1718136072541 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE \`user\``);
     }
 }
-

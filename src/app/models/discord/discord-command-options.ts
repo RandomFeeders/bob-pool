@@ -63,7 +63,8 @@ export abstract class DiscordCommandOptionBase {
         options.setDescriptionLocalizations(localizedDescriptions);
         options.setRequired(this.required);
 
-        const translateMapper = (key: string) => localeService.getAllTranslations(`commands.${command.key}.options.${this.key}.choices.${key}`);
+        const translateMapper = (key: string) =>
+            localeService.getAllTranslations(`commands.${command.key}.options.${this.key}.choices.${key}`);
         this.applyOptions(options, translateMapper);
 
         (command as any)[mapper.applier](options);
@@ -83,8 +84,8 @@ export class DiscordCommandAttachmentOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }
 
@@ -96,8 +97,8 @@ export class DiscordCommandBooleanOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }
 
@@ -109,8 +110,8 @@ export class DiscordCommandChannelOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }
 
@@ -155,8 +156,8 @@ export class DiscordCommandMentionableOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }
 
@@ -201,8 +202,8 @@ export class DiscordCommandRoleOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }
 
@@ -247,7 +248,7 @@ export class DiscordCommandUserOption extends DiscordCommandOptionBase {
     }
 
     public applyOptions(
-        option: ApplicationCommandOptionBase,
-        translateMapper: (key: string) => LocalizationMap
+        _option: ApplicationCommandOptionBase,
+        _translateMapper: (key: string) => LocalizationMap
     ): void {}
 }

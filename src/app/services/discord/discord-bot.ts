@@ -32,15 +32,15 @@ export class DiscordBot extends Client {
 
             slashCommand.setNSFW(this.commands[commandKey].nsfw ?? false);
 
-            this.commands[commandKey].options?.forEach(option => option.apply(slashCommand, this.localeService));
+            this.commands[commandKey].options?.forEach((option) => option.apply(slashCommand, this.localeService));
 
             slashCommand.guildExclusive = this.commands[commandKey].guildExclusive ?? true;
 
             slashCommands.push(slashCommand);
         }
 
-        const guildExclusiveCommands = slashCommands.filter(slashCommand => !!slashCommand.guildExclusive);
-        const otherCommands = slashCommands.filter(slashCommand => !slashCommand.guildExclusive);
+        const guildExclusiveCommands = slashCommands.filter((slashCommand) => !!slashCommand.guildExclusive);
+        const otherCommands = slashCommands.filter((slashCommand) => !slashCommand.guildExclusive);
 
         await this.application?.commands.set(otherCommands);
 
