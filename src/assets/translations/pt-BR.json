@@ -1,0 +1,126 @@
+{
+    "categories": {
+        "administrative": "administrativo",
+        "configuration": "configuração",
+        "funny": "engraçado",
+        "informative": "informativo",
+        "lewd": "tarado",
+        "voice": "voz"
+    },
+    "commands": {
+        "help": {
+            "name": "ajuda",
+            "description": "Mostra a lista de comandos disponíveis.",
+            "data": {
+                "title": "Lista de comandos",
+                "description": "Para uma ajuda mais detalhada use `/ajuda <comando>`."
+            }
+        },
+        "ping": {
+            "name": "ping",
+            "description": "Mostra alguns status de nerd deste aplicativo.",
+            "data": {
+                "initial_message": "〽️ Pingando...",
+                "websocket_ping": "Ping do Websocket: {{value}} ms",
+                "response_ping": "Ping da Resposta: {{value}} ms"
+            }
+        },
+        "join": {
+            "name": "entrar",
+            "description": "Entra no seu canal de voz atual.",
+            "data": {
+                "join_message": "Opa! É pra já parceiro!"
+            }
+        },
+        "leave": {
+            "name": "sair",
+            "description": "Faz eu sair do canal de voz atual.",
+            "data": {
+                "leave_message": "Tranquilo, parça!"
+            }
+        },
+        "play": {
+            "name": "tocar",
+            "description": "Faz eu começar a tocar uma música no canal de voz atual.",
+            "data": {
+                "embed_title": "🎶 Música Adicionada",
+                "embed_footer": "Pedida por {{tag}}"
+            },
+            "options": {
+                "query": {
+                    "name": "busca",
+                    "description": "Url ou nome da música."
+                }
+            }
+        },
+        "loop": {
+            "name": "repetição",
+            "description": "Muda o método de repetição.",
+            "data": {
+                "success_message": "Alterado modo de repetição para: `{{type}}`"
+            },
+            "options": {
+                "type": {
+                    "name": "tipo",
+                    "description": "O tipo da repetiçao.",
+                    "choices": {
+                        "none": "nenhum",
+                        "one": "uma",
+                        "all": "todas"
+                    }
+                }
+            }
+        },
+        "volume": {
+            "name": "volume",
+            "description": "Altera o volume.",
+            "data": {
+                "success_message": "Alterado volume para: `{{value}}`"
+            },
+            "options": {
+                "value": {
+                    "name": "valor",
+                    "description": "Valor do volume de 1 a 100."
+                }
+            }
+        },
+        "shuffle": {
+            "name": "randomizar",
+            "description": "Aleatoriza a fila.",
+            "data": {
+                "success_message": "Agora a fila ta doidona igual eu!"
+            }
+        },
+        "skip": {
+            "name": "pular",
+            "description": "Pula a música atual.",
+            "data": {
+                "success_message": "Adeus minha pequenina!"
+            }
+        },
+        "restart": {
+            "name": "reiniciar",
+            "description": "Reinicia a música atual.",
+            "data": {
+                "success_message": "Bora de novo, porra!"
+            }
+        },
+        "test": {
+            "name": "teste",
+            "description": "Apenas um comando de testes."            
+        }
+    },
+    "errors": {
+        "already_in_voice": "Eu já estou em um canal de voz nesse servidor!",
+        "invalid_text_channel": "Esse chat de texto é inválido!",
+        "invalid_voice_channel": "O seu chat de voz é inválido!",
+        "not_same_voice_channel": "Me parece que não estamos no mesmo canal de voz!",
+        "invalid_youtube_url": "Essa url do youtube está inválida!",
+        "youtube_video_unavailable": "Esse video do youtube está indisponível!",
+        "invalid_youtube_playlist": "Essa url de playlist do youtube é inválida!",
+        "invalid_spotify_url": "Essa url do spotify é inválida!",
+        "unsupported_track_url": "Desculpe, mas ainda não tenho suporte para essa url!",
+        "not_in_voice_yet": "Eu não estou em um canal de voz ainda!",
+        "invalid_command_option": "A opção selecionada é inválida neste comando!"
+    }
+}

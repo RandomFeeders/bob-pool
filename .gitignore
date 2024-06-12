@@ -1,0 +1,26 @@
+# Dependency directory
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# API keys and secrets
+.env
+.secrets
+
+# User config files
+.hintrc
+
+# Editors
+.vscode
+.idea
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
