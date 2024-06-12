@@ -18,7 +18,9 @@ export class RestartCommand implements DiscordCommand {
         if (!this.voiceService.hasVoiceData(interaction.guildId!)) throw new LocalizedError('not_in_voice_yet');
 
         const voiceData = this.voiceService.getVoiceData(interaction.guildId!)!;
-        voiceData.play();
+        voiceData.play().catch((err) => {
+            throw err;
+        });
 
         await interaction.reply({
             content: this.localeService.translate('commands.restart.data.success_message', interaction.member.locale),

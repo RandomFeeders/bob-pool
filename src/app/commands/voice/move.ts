@@ -40,7 +40,9 @@ export class MoveCommand implements DiscordCommand {
         voiceData.queue.splice(finalIndex, 0, removedTrack);
 
         if (finalIndex === 0 || finalIndex === -voiceData.queue.length) {
-            voiceData.play();
+            voiceData.play().catch((err) => {
+                throw err;
+            });
         }
 
         await interaction.reply({
