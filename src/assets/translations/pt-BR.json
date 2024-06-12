@@ -136,6 +136,23 @@
                 }
             }
         },
+        "queue": {
+            "name": "fila",
+            "description": "Lista todas as músicas na fila atual.",
+            "data": {
+                "embed_title": "Lista de músicas",
+                "embed_description": "*A fila está vazia!*",
+                "button_forward": "Próximo",
+                "button_back": "Anterior"
+            }
+        },
+        "continue": {
+            "name": "continuar",
+            "description": "Continue a reproduzir a fila atual.",
+            "data": {
+                "success_message": "Vamos começar de onde paramos!"
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            

@@ -136,6 +136,23 @@
                 }
             }
         },
+        "queue": {
+            "name": "queue",
+            "description": "Lists all the tracks on the current queue.",
+            "data": {
+                "embed_title": "Track queue",
+                "embed_description": "*The queue is empty!*",
+                "button_forward": "Next",
+                "button_back": "Previous"
+            }
+        },
+        "continue": {
+            "name": "continue",
+            "description": "Continue to play the current queue.",
+            "data": {
+                "success_message": "Let's start off where we left!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
