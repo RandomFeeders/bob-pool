@@ -122,6 +122,20 @@
                 }
             }
         },
+        "playnext": {
+            "name": "tocarproximo",
+            "description": "Coloca a música selecionada como próxima da fila.",
+            "data": {
+                "embed_title": "🎶 Música Adicionada",
+                "embed_footer": "Pedida por {{tag}}"
+            },
+            "options": {
+                "query": {
+                    "name": "busca",
+                    "description": "Url ou nome da música."
+                }
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            

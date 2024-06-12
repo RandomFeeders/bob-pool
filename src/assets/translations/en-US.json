@@ -122,6 +122,20 @@
                 }
             }
         },
+        "playnext": {
+            "name": "playnext",
+            "description": "Makes the selected song to play as next in queue.",
+            "data": {
+                "embed_title": "🎶 Track Added",
+                "embed_footer": "Requested by {{tag}}"
+            },
+            "options": {
+                "query": {
+                    "name": "query",
+                    "description": "Song url or name."
+                }
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
