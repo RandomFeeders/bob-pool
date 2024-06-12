@@ -19,4 +19,7 @@ export class Locale {
 
     @JsonProperty('commands')
     public commands?: { [key: string]: LocaleCommand };
+
+    @JsonProperty('sub_commands')
+    public subCommands?: { [key: string]: { [key: string]: LocaleCommand } };
 }

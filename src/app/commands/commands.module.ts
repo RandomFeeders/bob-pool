@@ -4,7 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServicesModule } from '@app/services/services.module';
 import { glob } from 'glob';
 import { resolve } from 'path';
-import { DiscordCommand } from '@app/models/discord/discord-command';
+import { DiscordCommand, DiscordSubCommand } from '@app/models/discord/discord-command';
+
+type ResolvedDiscordCommand = (DiscordCommand & { parent: undefined }) | DiscordSubCommand;
 
 @Module({})
 export class CommandsModule {
@@ -23,12 +25,18 @@ export class CommandsModule {
 
     public async initialize(app: INestApplicationContext, discordBot: DiscordBot): Promise<void> {
         const commands = await CommandsModule.getServices();
-        const commandInstances: DiscordCommand[] = await Promise.all(
+        const commandInstances: ResolvedDiscordCommand[] = await Promise.all(
             commands.map(async (command) => app.resolve(command as any))
         );
 
         for (const commandInstance of commandInstances) {
-            discordBot.commands[commandInstance.name] = commandInstance;
+            if (!!commandInstance.parent) {
+                discordBot.subCommands[commandInstance.parent] ??= {};
+                discordBot.subCommands[commandInstance.parent][commandInstance.name] = commandInstance;
+                continue;
+            }
+            
+            discordBot.commands[commandInstance.name] = commandInstance as DiscordCommand;
         }
     }
 

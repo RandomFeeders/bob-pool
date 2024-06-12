@@ -13,7 +13,7 @@ import {
     SlashCommandStringOption,
     SlashCommandUserOption,
 } from 'discord.js';
-import { DiscordCommandBuilder } from './discord-command';
+import { DiscordCommandBuilder, DiscordSubCommandBuilder } from './discord-command';
 
 type TypeMapper = {
     [key: number]: { type: new () => ApplicationCommandOptionBase; applier: keyof DiscordCommandBuilder };
@@ -30,7 +30,7 @@ export abstract class DiscordCommandOptionBase {
         this.required = required;
     }
 
-    public apply(command: DiscordCommandBuilder, localeService: LocaleService) {
+    public apply(command: DiscordCommandBuilder | DiscordSubCommandBuilder, localeService: LocaleService) {
         const typeMapper: TypeMapper = {
             [ApplicationCommandOptionType.Attachment]: {
                 type: SlashCommandAttachmentOption,
@@ -52,9 +52,13 @@ export abstract class DiscordCommandOptionBase {
         const mapper = typeMapper[this.type];
         const options = new mapper.type();
 
-        const localizedNames = localeService.getAllTranslations(`commands.${command.key}.options.${this.key}.name`);
+        const translationKeyBase = command instanceof DiscordSubCommandBuilder
+            ? `sub_commands.${command.parent}` 
+            : 'commands';
+
+        const localizedNames = localeService.getAllTranslations(`${translationKeyBase}.${command.key}.options.${this.key}.name`);
         const localizedDescriptions = localeService.getAllTranslations(
-            `commands.${command.key}.options.${this.key}.description`
+            `${translationKeyBase}.${command.key}.options.${this.key}.description`
         );
 
         options.setName(localizedNames['en-US']);
@@ -64,7 +68,7 @@ export abstract class DiscordCommandOptionBase {
         options.setRequired(this.required);
 
         const translateMapper = (key: string) =>
-            localeService.getAllTranslations(`commands.${command.key}.options.${this.key}.choices.${key}`);
+            localeService.getAllTranslations(`${translationKeyBase}.${command.key}.options.${this.key}.choices.${key}`);
         this.applyOptions(options, translateMapper);
 
         (command as any)[mapper.applier](options);
