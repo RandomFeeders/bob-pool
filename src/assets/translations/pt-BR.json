@@ -105,6 +105,23 @@
                 "success_message": "Bora de novo, porra!"
             }
         },
+        "move": {
+            "name": "mover",
+            "description": "Mova uma música de uma posição para outra.",
+            "data": {
+                "success_message": "A música em {{from}} foi movida para {{to}}."
+            },
+            "options": {
+                "from": {
+                    "name": "de",
+                    "description": "A posição inicial da música na fila."
+                },
+                "to": {
+                    "name": "para",
+                    "description": "A posição de destino da música."
+                }
+            }
+        },
         "test": {
             "name": "teste",
             "description": "Apenas um comando de testes."            

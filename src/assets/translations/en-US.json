@@ -105,6 +105,23 @@
                 "success_message": "I'll fucking do it again!"
             }
         },
+        "move": {
+            "name": "move",
+            "description": "Move a track from a position to another.",
+            "data": {
+                "success_message": "The track at {{from}} was moved to {{to}}."
+            },
+            "options": {
+                "from": {
+                    "name": "from",
+                    "description": "Track initial position in queue."
+                },
+                "to": {
+                    "name": "to",
+                    "description": "Track destination in queue."
+                }
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
