@@ -31,7 +31,7 @@ export class RemoveDupesCommand implements DiscordSubCommand {
                         return secondIndex;
                     return -1;
                 })
-                .filter((dupe) => !!dupe || dupe !== -1);
+                .filter((dupe) => !!dupe && dupe !== -1);
 
             return [...dupes, ...mappedDupes];
         }, []);
