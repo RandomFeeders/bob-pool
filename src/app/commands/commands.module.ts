@@ -10,7 +10,7 @@ type ResolvedDiscordCommand = (DiscordCommand & { parent: undefined }) | Discord
 
 @Module({})
 export class CommandsModule {
-    private static async getServices(): Promise<Provider[]> {
+    private static async getCommands(): Promise<Provider[]> {
         const globRepositories = await glob('./**/*{.ts,.js}', { cwd: __dirname });
         const result: Provider[] = [];
 
@@ -24,7 +24,7 @@ export class CommandsModule {
     }
 
     public async initialize(app: INestApplicationContext, discordBot: DiscordBot): Promise<void> {
-        const commands = await CommandsModule.getServices();
+        const commands = await CommandsModule.getCommands();
         const commandInstances: ResolvedDiscordCommand[] = await Promise.all(
             commands.map(async (command) => app.resolve(command as any))
         );
@@ -41,7 +41,7 @@ export class CommandsModule {
     }
 
     public static async register(): Promise<DynamicModule> {
-        const commands = await this.getServices();
+        const commands = await this.getCommands();
 
         return {
             module: CommandsModule,

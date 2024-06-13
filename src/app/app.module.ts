@@ -13,7 +13,7 @@ import { LoggerModule } from '@library/log/nest/nest-logger.module';
     imports: [
         LoggerModule,
         CommandsModule.register(),
-        EventsModule,
+        EventsModule.register(),
         ServicesModule,
         TypeOrmModule.forRootAsync({
             useFactory: () => typeOrmOptions,
@@ -48,7 +48,7 @@ export class AppModule implements NestModule {
         await commandsModule.initialize(this.app, this.discordBot);
 
         const eventsModule = this.app.get<EventsModule>(EventsModule);
-        await eventsModule.initialize(this.discordBot);
+        await eventsModule.initialize(this.app, this.discordBot);
 
         await this.discordBot.start();
     }

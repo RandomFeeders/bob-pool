@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { Activity } from '@app/services/database/entities/activity.entity';
 
 @Injectable()
+@DiscordEvent('ready')
 export class ReadyEvent implements DiscordEvent<'ready'> {
     public constructor(@InjectRepository(Activity) private activityRepository: Repository<Activity>) {}
 

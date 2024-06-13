@@ -10,6 +10,7 @@ import { User } from '@app/services/database/entities/user.entity';
 import { Logger } from '@library/log/logger';
 
 @Injectable()
+@DiscordEvent('interactionCreate')
 export class CommandHandler implements DiscordEvent<'interactionCreate'> {
     public constructor(
         private userRepository: UserRepository,
