@@ -1,7 +1,6 @@
 import { DiscordCommand, DiscordCommandCategory, DiscordInteraction } from '@app/models/discord/discord-command';
 import { DiscordCommandIntegerOption, DiscordCommandStringOption } from '@app/models/discord/discord-command-options';
 import { LocalizedError } from '@app/models/locale/localized-error';
-import { VoiceDataLoop } from '@app/services/database/entities/voice-data.entity';
 import { DiscordVoiceService } from '@app/services/discord/discord-voice';
 import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
@@ -47,7 +46,7 @@ export class MoveCommand implements DiscordCommand {
 
         await interaction.reply({
             content: this.localeService.translate('commands.move.data.success_message', interaction.member.locale, {
-                from: initialIndex < 0 ? voiceData.queue.length + initialIndex : initialIndex + 1,
+                from: initialIndex < 0 ? voiceData.queue.length + initialIndex + 1 : initialIndex + 1,
                 to: finalIndex < 0 ? voiceData.queue.length + finalIndex : finalIndex + 1
             }),
             ephemeral: true,
