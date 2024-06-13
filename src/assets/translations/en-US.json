@@ -11,7 +11,7 @@
         "help": {
             "name": "help",
             "description": "Shows a list of available commands.",
-            "data": {                
+            "data": {
                 "title": "List of comamnds",
                 "description": "For more detailed help use `/help <command>`."
             }
@@ -105,10 +105,117 @@
                 "success_message": "I'll fucking do it again!"
             }
         },
+        "move": {
+            "name": "move",
+            "description": "Move a track from a position to another.",
+            "data": {
+                "success_message": "The track at {{from}} was moved to {{to}}."
+            },
+            "options": {
+                "from": {
+                    "name": "from",
+                    "description": "Track initial position in queue."
+                },
+                "to": {
+                    "name": "to",
+                    "description": "Track destination in queue."
+                }
+            }
+        },
+        "queue": {
+            "name": "queue",
+            "description": "Lists all the tracks on the current queue.",
+            "data": {
+                "embed_title": "Track queue",
+                "embed_description": "*The queue is empty!*",
+                "button_forward": "Next",
+                "button_back": "Previous"
+            }
+        },
+        "continue": {
+            "name": "continue",
+            "description": "Continue to play the current queue.",
+            "data": {
+                "success_message": "Let's start off where we left!"
+            }
+        },
+        "clear": {
+            "name": "clear",
+            "description": "Makes me clear the current queue.",
+            "data": {
+                "success_message": "This shit is now cleaner than my apartment!"
+            }
+        },
+        "remove": {
+            "name": "remove",
+            "description": "Removes a track from a position in queue.",
+            "options": {
+                "position": {
+                    "name": "position",
+                    "description": "The track position in queue."
+                }
+            },
+            "data": {
+                "success_message": "Done! The track at {{position}} was removed!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
         }
+    },
+    "sub_commands": {
+        "play": {
+            "next": {
+                "name": "next",
+                "description": "Makes the selected song to play as next in queue.",
+                "data": {
+                    "embed_title": "🎶 Track Added",
+                    "embed_footer": "Requested by {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "query",
+                        "description": "Song url or name."
+                    }
+                }
+            },
+            "clear": {
+                "name": "clear",
+                "description": "Makes me clear the current queue and start to play a music on current voice channel.",
+                "data": {
+                    "embed_title": "🎶 Track Added",
+                    "embed_footer": "Requested by {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "query",
+                        "description": "Song url or name."
+                    }
+                }
+            }
+        },
+        "skip": {
+            "force": {
+                "name": "force",
+                "description": "Skips and removes the current song.",
+                "data": {
+                    "success_message": "Bye bye little one!"
+                }
+            }
+        },
+        "remove": {
+            "dupes": {
+                "name": "dupes",
+                "description": "Remove all repeated songs.",
+                "data": {
+                    "success_message": "Goodbye you stinky doppelgängers!"
+                }
+            }
+        }
+    },
+    "messages": {
+        "idle_voice_timeout": "I'm leaving! I've been alone for 2 minutes already 😭"
     },
     "errors": {
         "already_in_voice": "I'm already in a voice channel in this server!",

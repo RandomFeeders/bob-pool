@@ -94,7 +94,7 @@ jobs:
             rimraf build
             chmod -R 777 .
             
-            runuser -l riven -c "cd ${{ vars.SSH_PATH }} && yarn workspaces focus --production"
+            runuser -l riven -c "cd ${{ vars.SSH_PATH }} && yarn install"
             runuser -l riven -c "pm2 restart \"Bob Pool\""
 
   cleanup:

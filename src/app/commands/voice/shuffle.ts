@@ -20,10 +20,10 @@ export class ShuffleCommand implements DiscordCommand {
 
         const voiceData = this.voiceService.getVoiceData(interaction.guildId!)!;
 
-        const queueBackup = voiceData.queue.slice(0);
-        const currentTrack = queueBackup.shift();
-        const shuffledQueue = shuffleArray(queueBackup);
-        if (!!currentTrack) voiceData.queue.unshift(currentTrack);
+        const queueClone = voiceData.queue.slice(0);
+        const currentTrack = queueClone.shift();
+        const shuffledQueue = shuffleArray(queueClone);
+        if (!!currentTrack) shuffledQueue.unshift(currentTrack);
 
         voiceData.queue = shuffledQueue;
 
