@@ -9,7 +9,7 @@ import { Injectable, Scope } from '@nestjs/common';
 export class VolumeCommand implements DiscordCommand {
     public name: string = 'volume';
     public category = DiscordCommandCategory.VOICE;
-    public options = [new DiscordCommandIntegerOption('value', true, { min: 1, max: 100 })];
+    public options = [new DiscordCommandIntegerOption('value', true, { min: 1, max: 200 })];
 
     public constructor(
         private localeService: LocaleService,
@@ -20,7 +20,7 @@ export class VolumeCommand implements DiscordCommand {
         if (!this.voiceService.hasVoiceData(interaction.guildId!)) throw new LocalizedError('not_in_voice_yet');
 
         const volumeOption = interaction.options.get('value')?.value;
-        if (typeof volumeOption !== 'number' || volumeOption < 1 || volumeOption > 100)
+        if (typeof volumeOption !== 'number' || volumeOption < 1 || volumeOption > 200)
             throw new LocalizedError('invalid_command_option');
 
         const voiceData = this.voiceService.getVoiceData(interaction.guildId!)!;

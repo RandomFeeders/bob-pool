@@ -140,7 +140,7 @@ export class DiscordCommandIntegerOption extends DiscordCommandOptionBase {
 
     public applyOptions(option: SlashCommandIntegerOption, translateMapper: (key: string) => LocalizationMap): void {
         if (!!this.min) option.setMinValue(this.min);
-        if (!!this.max) option.setMinValue(this.max);
+        if (!!this.max) option.setMaxValue(this.max);
         if (!!this.choices && Object.keys(this.choices).length !== 0) {
             const choices = Object.keys(this.choices).map((key) => ({
                 name: key,
@@ -186,7 +186,7 @@ export class DiscordCommandNumberOption extends DiscordCommandOptionBase {
 
     public applyOptions(option: SlashCommandNumberOption, translateMapper: (key: string) => LocalizationMap): void {
         if (!!this.min) option.setMinValue(this.min);
-        if (!!this.max) option.setMinValue(this.max);
+        if (!!this.max) option.setMaxValue(this.max);
         if (!!this.choices && Object.keys(this.choices).length !== 0) {
             const choices = Object.keys(this.choices).map((key) => ({
                 name: key,
