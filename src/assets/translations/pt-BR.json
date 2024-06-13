@@ -158,6 +158,20 @@
             "description": "Apenas um comando de testes."            
         }
     },
+    "sub_commands": {
+        "skip": {
+            "force": {
+                "name": "forçado",
+                "description": "Pula e remove a música atual da fila.",
+                "data": {
+                    "success_message": "Adeus minha pequenina!"
+                }
+            }
+        }
+    },
+    "messages": {
+        "idle_voice_timeout": "Eu vou embora! Já faz 2 minutos que estou sozinho 😭"
+    },
     "errors": {
         "already_in_voice": "Eu já estou em um canal de voz nesse servidor!",
         "invalid_text_channel": "Esse chat de texto é inválido!",

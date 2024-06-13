@@ -158,6 +158,20 @@
             "description": "Just a test command."
         }
     },
+    "sub_commands": {
+        "skip": {
+            "force": {
+                "name": "force",
+                "description": "Skips and removes the current song.",
+                "data": {
+                    "success_message": "Bye bye little one!"
+                }
+            }
+        }
+    },
+    "messages": {
+        "idle_voice_timeout": "I'm leaving! I've been alone for 2 minutes already 😭"
+    },
     "errors": {
         "already_in_voice": "I'm already in a voice channel in this server!",
         "invalid_text_channel": "This text channel is invalid!",
