@@ -25,9 +25,10 @@ export class PlayCommand implements DiscordCommand {
         const query = await this.voiceService.identifyQuery(rawQuery);
 
         voiceData.enqueue(query, interaction.member.data);
-        voiceData.play().catch((err) => {
-            throw err;
-        });
+        if (!voiceData.isPlaying)
+            voiceData.play().catch((err) => {
+                throw err;
+            });
 
         const response = new EmbedBuilder({
             title: this.localeService.translate('commands.play.data.embed_title', interaction.member.locale),

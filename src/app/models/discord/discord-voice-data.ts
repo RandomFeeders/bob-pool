@@ -94,6 +94,8 @@ export class DiscordVoiceData {
 
         if (this.queue.length === 0) return this.stop();
 
-        this.play();
+        this.play().catch((err) => {
+            throw err;
+        });
     }
 }
