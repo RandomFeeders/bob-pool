@@ -30,7 +30,7 @@ export class RemoveCommand implements DiscordCommand {
         const queueIndex = positionOption > 0 ? positionOption - 1 : positionOption;
 
         if (queueIndex === 0 || queueIndex === -voiceData.queue.length) voiceData.skip(true);
-        else voiceData.queue.splice(positionOption, 1);
+        else voiceData.queue.splice(queueIndex, 1);
 
         await interaction.reply({
             content: this.localeService.translate('commands.remove.data.success_message', interaction.member.locale, {
