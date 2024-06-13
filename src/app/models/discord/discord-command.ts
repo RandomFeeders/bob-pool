@@ -1,4 +1,10 @@
-import { CommandInteraction, GuildMember, Locale, SlashCommandBuilder, SlashCommandSubcommandBuilder } from 'discord.js';
+import {
+    CommandInteraction,
+    GuildMember,
+    Locale,
+    SlashCommandBuilder,
+    SlashCommandSubcommandBuilder,
+} from 'discord.js';
 import { DiscordBot } from '@app/services/discord/discord-bot';
 import { User } from '@app/services/database/entities/user.entity';
 import { DiscordCommandOptionBase } from './discord-command-options';

@@ -35,7 +35,7 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
 
         const bot = interaction.client as DiscordBot;
         const subCommand = interaction.options.getSubcommand(false);
-        const commandName = !!subCommand ? interaction.commandName.replace('sc_', '') : interaction.commandName;        
+        const commandName = !!subCommand ? interaction.commandName.replace('sc_', '') : interaction.commandName;
         const command = !!subCommand ? bot.subCommands[commandName][subCommand] : bot.commands[commandName];
 
         if (!command) return;

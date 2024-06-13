@@ -57,18 +57,21 @@ export class QueueCommand implements DiscordCommand {
         }
 
         const paddingSize = voiceData.queue.length.toString().length;
-        const pages = voiceData.queue.reduce<string[]>((acc, track, index) => {
-            const line = `\`${(index + 1).toString().padStart(paddingSize, '0')}\`. ${track}\n`;
+        const pages = voiceData.queue.reduce<string[]>(
+            (acc, track, index) => {
+                const line = `\`${(index + 1).toString().padStart(paddingSize, '0')}\`. ${track}\n`;
 
-            if (acc[acc.length - 1].length + line.length > MAX_EMBED_DESCRIPTION_LENGTH) {
-                acc[acc.length - 1] = acc[acc.length - 1].slice(0, -1);
-                acc.push(line);
+                if (acc[acc.length - 1].length + line.length > MAX_EMBED_DESCRIPTION_LENGTH) {
+                    acc[acc.length - 1] = acc[acc.length - 1].slice(0, -1);
+                    acc.push(line);
+                    return acc;
+                }
+
+                acc[acc.length - 1] += line;
                 return acc;
-            }
-
-            acc[acc.length - 1] += line;
-            return acc;
-        }, ['']);
+            },
+            ['']
+        );
 
         queueEmbed.setDescription(pages[0]);
 
@@ -105,11 +108,12 @@ export class QueueCommand implements DiscordCommand {
             const newActionRowBuilder = new ActionRowBuilder<ButtonBuilder>();
 
             if (currentPageIndex > 0) newActionRowBuilder.addComponents(this.getBackButton(interaction.member.locale));
-            if (currentPageIndex < pages.length - 1) newActionRowBuilder.addComponents(this.getForwardButton(interaction.member.locale));
+            if (currentPageIndex < pages.length - 1)
+                newActionRowBuilder.addComponents(this.getForwardButton(interaction.member.locale));
 
             await buttonInteraction.update({
                 embeds: [queueEmbed],
-                components: [newActionRowBuilder]
+                components: [newActionRowBuilder],
             });
         });
     }

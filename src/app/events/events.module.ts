@@ -39,7 +39,7 @@ export class EventsModule {
             module: EventsModule,
             imports: [TypeOrmModule.forFeature([Activity]), ServicesModule],
             providers: [...events],
-            exports: [...events, TypeOrmModule]
-        }
+            exports: [...events, TypeOrmModule],
+        };
     }
 }

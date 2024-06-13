@@ -52,11 +52,12 @@ export abstract class DiscordCommandOptionBase {
         const mapper = typeMapper[this.type];
         const options = new mapper.type();
 
-        const translationKeyBase = command instanceof DiscordSubCommandBuilder
-            ? `sub_commands.${command.parent}` 
-            : 'commands';
+        const translationKeyBase =
+            command instanceof DiscordSubCommandBuilder ? `sub_commands.${command.parent}` : 'commands';
 
-        const localizedNames = localeService.getAllTranslations(`${translationKeyBase}.${command.key}.options.${this.key}.name`);
+        const localizedNames = localeService.getAllTranslations(
+            `${translationKeyBase}.${command.key}.options.${this.key}.name`
+        );
         const localizedDescriptions = localeService.getAllTranslations(
             `${translationKeyBase}.${command.key}.options.${this.key}.description`
         );

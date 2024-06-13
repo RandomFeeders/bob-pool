@@ -20,11 +20,11 @@ export class Locale {
     public errors?: LocaleDictionary<string>;
 
     @JsonProperty('messages')
-    public messages?: LocaleDictionary<string>
+    public messages?: LocaleDictionary<string>;
 
     @JsonProperty('commands')
     public commands?: LocaleDictionary<LocaleCommand>;
-    
+
     @JsonProperty('sub_commands')
     public subCommands?: LocaleDictionary<LocaleDictionary<LocaleCommand>>;
 }

@@ -35,7 +35,7 @@ export class CommandsModule {
                 discordBot.subCommands[commandInstance.parent][commandInstance.name] = commandInstance;
                 continue;
             }
-            
+
             discordBot.commands[commandInstance.name] = commandInstance as DiscordCommand;
         }
     }

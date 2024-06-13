@@ -7,7 +7,7 @@ export interface DiscordEvent<K extends keyof ClientEvents> {
 }
 
 export function DiscordEvent(type: keyof ClientEvents) {
-    return function (target: Function) {
+    return function (target: new () => unknown) {
         const metadata = Reflect.getMetadata(DISCORD_EVENT_METADATA, target) ?? type;
         Reflect.defineMetadata(DISCORD_EVENT_METADATA, metadata, target);
     };
