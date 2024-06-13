@@ -34,14 +34,14 @@
         },
         "leave": {
             "name": "sair",
-            "description": "Faz eu sair do canal de voz atual.",
+            "description": "Me faz sair do canal de voz atual.",
             "data": {
                 "leave_message": "Tranquilo, parça!"
             }
         },
         "play": {
             "name": "tocar",
-            "description": "Faz eu começar a tocar uma música no canal de voz atual.",
+            "description": "Me faz começar a tocar uma música no canal de voz atual.",
             "data": {
                 "embed_title": "🎶 Música Adicionada",
                 "embed_footer": "Pedida por {{tag}}"
@@ -122,20 +122,6 @@
                 }
             }
         },
-        "playnext": {
-            "name": "tocarproximo",
-            "description": "Coloca a música selecionada como próxima da fila.",
-            "data": {
-                "embed_title": "🎶 Música Adicionada",
-                "embed_footer": "Pedida por {{tag}}"
-            },
-            "options": {
-                "query": {
-                    "name": "busca",
-                    "description": "Url ou nome da música."
-                }
-            }
-        },
         "queue": {
             "name": "fila",
             "description": "Lista todas as músicas na fila atual.",
@@ -153,18 +139,77 @@
                 "success_message": "Vamos começar de onde paramos!"
             }
         },
+        "clear": {
+            "name": "limpar",
+            "description": "Me faz limpar a fila atual.",
+            "data": {
+                "success_message": "Essa merda agora está mais limpa que meu apartamento!"
+            }
+        },
+        "remove": {
+            "name": "remover",
+            "description": "Remove uma música de uma posição da fila.",
+            "options": {
+                "position": {
+                    "name": "posição",
+                    "description": "A posição da música na fila."
+                }
+            },
+            "data": {
+                "success_message": "Pronto! A música em {{position}} foi removida!"
+            }
+        },
         "test": {
             "name": "teste",
-            "description": "Apenas um comando de testes."            
+            "description": "Apenas um comando de testes."
         }
     },
     "sub_commands": {
+        "play": {
+            "next": {
+                "name": "proximo",
+                "description": "Coloca a música selecionada como próxima da fila.",
+                "data": {
+                    "embed_title": "🎶 Música Adicionada",
+                    "embed_footer": "Pedida por {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "busca",
+                        "description": "Url ou nome da música."
+                    }
+                }
+            },
+            "clear": {
+                "name": "limpo",
+                "description": "Me faz limpar a fila atual e começar a tocar uma música no canal de voz atual.",
+                "data": {
+                    "embed_title": "🎶 Música Adicionada",
+                    "embed_footer": "Pedida por {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "busca",
+                        "description": "Url ou nome da música."
+                    }
+                }
+            }
+        },
         "skip": {
             "force": {
                 "name": "forçado",
                 "description": "Pula e remove a música atual da fila.",
                 "data": {
                     "success_message": "Adeus minha pequenina!"
+                }
+            }
+        },
+        "remove": {
+            "dupes": {
+                "name": "duplicatas",
+                "description": "Remove todas as músicas repetidas.",
+                "data": {
+                    "success_message": "Adeus seus doppelgängers fedidos!"
                 }
             }
         }

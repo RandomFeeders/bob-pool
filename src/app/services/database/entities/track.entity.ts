@@ -84,4 +84,14 @@ export class Track {
         const title = this.type === 'youtube' ? this.title : `${this.artist} - ${this.title}`;
         return `[${title}](${this.url}) \`${time}\``;
     }
+
+    public equivalent(otherTrack: Track): boolean {
+        const normalize = (value?: string) => value?.normalize().trim().toLowerCase();
+        const compare = (left?: string, right?: string) => normalize(left) === normalize(right);
+        return (
+            this.id === otherTrack.id ||
+            compare(this.url, otherTrack.url) ||
+            (compare(this.title, otherTrack.title) && compare(this.artist, otherTrack.artist))
+        );
+    }
 }

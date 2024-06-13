@@ -11,7 +11,7 @@
         "help": {
             "name": "help",
             "description": "Shows a list of available commands.",
-            "data": {                
+            "data": {
                 "title": "List of comamnds",
                 "description": "For more detailed help use `/help <command>`."
             }
@@ -122,20 +122,6 @@
                 }
             }
         },
-        "playnext": {
-            "name": "playnext",
-            "description": "Makes the selected song to play as next in queue.",
-            "data": {
-                "embed_title": "🎶 Track Added",
-                "embed_footer": "Requested by {{tag}}"
-            },
-            "options": {
-                "query": {
-                    "name": "query",
-                    "description": "Song url or name."
-                }
-            }
-        },
         "queue": {
             "name": "queue",
             "description": "Lists all the tracks on the current queue.",
@@ -153,18 +139,77 @@
                 "success_message": "Let's start off where we left!"
             }
         },
+        "clear": {
+            "name": "clear",
+            "description": "Makes me clear the current queue.",
+            "data": {
+                "success_message": "This shit is now cleaner than my apartment!"
+            }
+        },
+        "remove": {
+            "name": "remove",
+            "description": "Removes a track from a position in queue.",
+            "options": {
+                "position": {
+                    "name": "position",
+                    "description": "The track position in queue."
+                }
+            },
+            "data": {
+                "success_message": "Done! The track at {{position}} was removed!"
+            }
+        },
         "test": {
             "name": "test",
             "description": "Just a test command."
         }
     },
     "sub_commands": {
+        "play": {
+            "next": {
+                "name": "next",
+                "description": "Makes the selected song to play as next in queue.",
+                "data": {
+                    "embed_title": "🎶 Track Added",
+                    "embed_footer": "Requested by {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "query",
+                        "description": "Song url or name."
+                    }
+                }
+            },
+            "clear": {
+                "name": "clear",
+                "description": "Makes me clear the current queue and start to play a music on current voice channel.",
+                "data": {
+                    "embed_title": "🎶 Track Added",
+                    "embed_footer": "Requested by {{tag}}"
+                },
+                "options": {
+                    "query": {
+                        "name": "query",
+                        "description": "Song url or name."
+                    }
+                }
+            }
+        },
         "skip": {
             "force": {
                 "name": "force",
                 "description": "Skips and removes the current song.",
                 "data": {
                     "success_message": "Bye bye little one!"
+                }
+            }
+        },
+        "remove": {
+            "dupes": {
+                "name": "dupes",
+                "description": "Remove all repeated songs.",
+                "data": {
+                    "success_message": "Goodbye you stinky doppelgängers!"
                 }
             }
         }
