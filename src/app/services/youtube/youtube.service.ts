@@ -91,7 +91,6 @@ export class YoutubeService implements Streamable {
         });
 
         const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary, inlineVolume: true });
-
         resource.volume?.setVolume(YoutubeService.AUDIO_VOLUME * (volume / 100));
 
         return resource;
