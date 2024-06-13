@@ -79,6 +79,8 @@ export class DiscordVoiceData {
         });
 
         this.player.play(stream);
+
+        this.isPlaying = true;
     }
 
     public stop(): void {
