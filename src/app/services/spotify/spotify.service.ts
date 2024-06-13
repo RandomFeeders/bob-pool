@@ -125,18 +125,20 @@ export class SpotifyService {
     public async getAudioResource(track: Track, volume: number = 100): Promise<AudioResource> {
         if (!track.providerId) throw new Error("The next track doesn't have a valid id!");
 
-        const youtubeEquivalent = this.cache.get(track.providerId);
+        const youtubeEquivalent = new Track();
+        youtubeEquivalent.providerId = this.cache.get(track.providerId);
 
-        if (!!youtubeEquivalent) return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
+        if (!!youtubeEquivalent.providerId) return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
 
         const searchResult = await this.youtubeService.search(`${track.artist} - ${track.title}`);
 
         if (!searchResult || searchResult.length === 0)
             throw new LocalizedError('Unable to find a track equivalent on youtube.');
 
-        this.cache.set(track.providerId, searchResult[0].id);
+        youtubeEquivalent.providerId = searchResult[0].id;
+        this.cache.set(track.providerId, youtubeEquivalent.providerId);
 
-        return await this.youtubeService.getAudioResource(searchResult[0].id, volume);
+        return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
     }
 
     public async cacheTrack(track: Track): Promise<void> {

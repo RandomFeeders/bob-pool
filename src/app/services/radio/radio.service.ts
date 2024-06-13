@@ -2,6 +2,7 @@ import { Streamable } from '@library/interfaces/streamable.interface';
 import { AudioResource, StreamType, createAudioResource } from '@discordjs/voice';
 import { Injectable } from '@nestjs/common';
 import { Radio } from './models/radio';
+import { Track } from '../database/entities/track.entity';
 
 @Injectable()
 export class RadioService implements Streamable {
@@ -16,8 +17,8 @@ export class RadioService implements Streamable {
 
     public constructor() {}
 
-    public async getAudioResource(radioId: string, volume: number = 100): Promise<AudioResource> {
-        const radio = RadioService.RADIOS.find((radio) => radio.id === radioId);
+    public async getAudioResource(track: Track, volume: number = 100): Promise<AudioResource> {
+        const radio = RadioService.RADIOS.find((radio) => radio.id === track.providerId);
         if (!radio) throw 'Radio not found!';
 
         const resource = createAudioResource(radio.url, { inputType: StreamType.Arbitrary, inlineVolume: true });
