@@ -1,4 +1,10 @@
-import { CommandInteraction, GuildMember, Locale, SlashCommandBuilder } from 'discord.js';
+import {
+    CommandInteraction,
+    GuildMember,
+    Locale,
+    SlashCommandBuilder,
+    SlashCommandSubcommandBuilder,
+} from 'discord.js';
 import { DiscordBot } from '@app/services/discord/discord-bot';
 import { User } from '@app/services/database/entities/user.entity';
 import { DiscordCommandOptionBase } from './discord-command-options';
@@ -25,6 +31,14 @@ export interface DiscordCommand {
     execute(interaction: DiscordInteraction): Promise<void>;
 }
 
+export interface DiscordSubCommand {
+    name: string;
+    parent: string;
+    options?: DiscordCommandOptionBase[];
+
+    execute(interaction: DiscordInteraction): Promise<void>;
+}
+
 export class DiscordCommandBuilder extends SlashCommandBuilder {
     public key: string;
     public guildExclusive?: boolean;
@@ -33,5 +47,17 @@ export class DiscordCommandBuilder extends SlashCommandBuilder {
         super();
 
         this.key = key;
+    }
+}
+
+export class DiscordSubCommandBuilder extends SlashCommandSubcommandBuilder {
+    public key: string;
+    public parent: string;
+
+    public constructor(key: string, parent: string) {
+        super();
+
+        this.key = key;
+        this.parent = parent;
     }
 }

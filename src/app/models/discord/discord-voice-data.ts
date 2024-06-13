@@ -79,6 +79,8 @@ export class DiscordVoiceData {
         });
 
         this.player.play(stream);
+
+        this.isPlaying = true;
     }
 
     public stop(): void {
@@ -94,6 +96,8 @@ export class DiscordVoiceData {
 
         if (this.queue.length === 0) return this.stop();
 
-        this.play();
+        this.play().catch((err) => {
+            throw err;
+        });
     }
 }

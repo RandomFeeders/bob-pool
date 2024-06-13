@@ -10,6 +10,7 @@ import { User } from '@app/services/database/entities/user.entity';
 import { Logger } from '@library/log/logger';
 
 @Injectable()
+@DiscordEvent('interactionCreate')
 export class CommandHandler implements DiscordEvent<'interactionCreate'> {
     public constructor(
         private userRepository: UserRepository,
@@ -30,10 +31,13 @@ export class CommandHandler implements DiscordEvent<'interactionCreate'> {
     }
 
     public async execute(interaction: Interaction): Promise<void> {
-        if (!interaction.isCommand()) return;
+        if (!interaction.isChatInputCommand()) return;
 
         const bot = interaction.client as DiscordBot;
-        const command = bot.commands[interaction.commandName];
+        const subCommand = interaction.options.getSubcommand(false);
+        const commandName = !!subCommand ? interaction.commandName.replace('sc_', '') : interaction.commandName;
+        const command = !!subCommand ? bot.subCommands[commandName][subCommand] : bot.commands[commandName];
+
         if (!command) return;
 
         const extendedInteraction = interaction as DiscordInteraction;

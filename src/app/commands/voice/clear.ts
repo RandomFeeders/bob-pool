@@ -5,8 +5,8 @@ import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
 
 @Injectable({ scope: Scope.TRANSIENT })
-export class RestartCommand implements DiscordCommand {
-    public name: string = 'restart';
+export class ClearCommand implements DiscordCommand {
+    public name: string = 'clear';
     public category = DiscordCommandCategory.VOICE;
 
     public constructor(
@@ -17,13 +17,11 @@ export class RestartCommand implements DiscordCommand {
     public async execute(interaction: DiscordInteraction): Promise<void> {
         if (!this.voiceService.hasVoiceData(interaction.guildId!)) throw new LocalizedError('not_in_voice_yet');
 
-        const voiceData = this.voiceService.getVoiceData(interaction.guildId!)!;
-        voiceData.play().catch((err) => {
-            throw err;
-        });
+        const voiceData = await this.voiceService.setVoiceData(interaction);
+        voiceData.queue = [];
 
         await interaction.reply({
-            content: this.localeService.translate('commands.restart.data.success_message', interaction.member.locale),
+            content: this.localeService.translate('commands.clear.data.success_message', interaction.member.locale),
             ephemeral: true,
         });
     }

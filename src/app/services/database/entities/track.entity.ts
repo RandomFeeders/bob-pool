@@ -75,4 +75,23 @@ export class Track {
         nullable: false,
     })
     public artist?: string;
+
+    public toString(): string {
+        const length = this.length ?? 0;
+        const min = Math.floor(length / 60);
+        const sec = length - min * 60;
+        const time = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        const title = this.type === 'youtube' ? this.title : `${this.artist} - ${this.title}`;
+        return `[${title}](${this.url}) \`${time}\``;
+    }
+
+    public equivalent(otherTrack: Track): boolean {
+        const normalize = (value?: string) => value?.normalize().trim().toLowerCase();
+        const compare = (left?: string, right?: string) => normalize(left) === normalize(right);
+        return (
+            this.id === otherTrack.id ||
+            compare(this.url, otherTrack.url) ||
+            (compare(this.title, otherTrack.title) && compare(this.artist, otherTrack.artist))
+        );
+    }
 }
