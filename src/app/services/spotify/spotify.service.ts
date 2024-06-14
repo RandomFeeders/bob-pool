@@ -128,7 +128,8 @@ export class SpotifyService {
         const youtubeEquivalent = new Track();
         youtubeEquivalent.providerId = this.cache.get(track.providerId);
 
-        if (!!youtubeEquivalent.providerId) return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
+        if (!!youtubeEquivalent.providerId)
+            return await this.youtubeService.getAudioResource(youtubeEquivalent, volume);
 
         const searchResult = await this.youtubeService.search(`${track.artist} - ${track.title}`);
 

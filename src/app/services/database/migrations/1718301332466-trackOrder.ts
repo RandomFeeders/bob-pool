@@ -1,7 +1,7 @@
-import { MigrationInterface, QueryRunner } from "typeorm";
+import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class TrackOrder1718301332466 implements MigrationInterface {
-    name = 'TrackOrder1718301332466'
+    name = 'TrackOrder1718301332466';
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`ALTER TABLE \`track\` ADD \`order\` int NULL`);
@@ -10,5 +10,4 @@ export class TrackOrder1718301332466 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`ALTER TABLE \`track\` DROP COLUMN \`order\``);
     }
-
 }
