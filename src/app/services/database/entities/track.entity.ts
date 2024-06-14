@@ -79,7 +79,7 @@ export class Track {
     @Column({
         name: 'order',
         type: 'integer',
-        nullable: true
+        nullable: true,
     })
     public order?: number;
 
