@@ -85,7 +85,8 @@ export class DiscordVoiceService {
 
         const dbVoiceData = await this.voiceDataRepository.findOneBy({ discordGuildId: guildId });
         if (!!dbVoiceData && !!dbVoiceData.tracks) {
-            voiceData.queue = new VoiceQueue(...dbVoiceData.tracks);
+            const dbTrackList = dbVoiceData.tracks.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+            voiceData.queue = new VoiceQueue(...dbTrackList);
             voiceData.volume = dbVoiceData.volume ?? voiceData.volume;
             voiceData.loop = dbVoiceData.loop ?? voiceData.loop;
         }
@@ -109,7 +110,10 @@ export class DiscordVoiceService {
             dbVoiceData.discordGuildId = guildId;
             dbVoiceData.loop = localData.loop;
             dbVoiceData.volume = localData.volume;
-            dbVoiceData.tracks = localData.queue;
+            dbVoiceData.tracks = localData.queue.map((track, index) => {
+                track.order = index;
+                return track;
+            });
 
             await this.voiceDataRepository.save(dbVoiceData);
 
