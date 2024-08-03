@@ -1,6 +1,6 @@
 import ytpl from 'ytpl';
 import ytsr from 'ytsr';
-import ytdl, { getBasicInfo } from 'ytdl-core';
+import ytdl, { getBasicInfo } from '@distube/ytdl-core';
 import { Injectable } from '@nestjs/common';
 import { YoutubeVideo } from './models/youtube-video';
 import { YoutubePlaylist } from './models/youtube-playlist';

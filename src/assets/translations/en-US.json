@@ -43,7 +43,9 @@
             "name": "play",
             "description": "Makes me start to play a music on current voice channel.",
             "data": {
-                "embed_title": "🎶 Track Added",
+                "embed_track_title": "🎶 Track Added",
+                "embed_playlist_title": "🎶 Playlist Added",
+                "embed_playlist_description": "Added `{{count}}` tracks from {{playlist}}.",
                 "embed_footer": "Requested by {{tag}}"
             },
             "options": {
@@ -169,10 +171,6 @@
             "next": {
                 "name": "next",
                 "description": "Makes the selected song to play as next in queue.",
-                "data": {
-                    "embed_title": "🎶 Track Added",
-                    "embed_footer": "Requested by {{tag}}"
-                },
                 "options": {
                     "query": {
                         "name": "query",
@@ -183,10 +181,6 @@
             "clear": {
                 "name": "clear",
                 "description": "Makes me clear the current queue and start to play a music on current voice channel.",
-                "data": {
-                    "embed_title": "🎶 Track Added",
-                    "embed_footer": "Requested by {{tag}}"
-                },
                 "options": {
                     "query": {
                         "name": "query",

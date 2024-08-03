@@ -18,6 +18,12 @@ export class DiscordVoiceQuery {
 
     public origin?: YoutubeVideo | YoutubePlaylist | SpotifyTrack | SpotifyPlaylist;
 
+    public get trackCount(): number {
+        if (this.origin instanceof YoutubePlaylist) return this.origin.items.length;
+        if (this.origin instanceof SpotifyPlaylist) return this.origin.tracks.items.length;
+        return 1;
+    }
+
     private constructor() {}
 
     public static from(video: YoutubeVideo): DiscordVoiceQuery;
@@ -115,6 +121,8 @@ export class DiscordVoiceQuery {
     }
 
     public toString(): string {
+        if (this.subtype === 'playlist') return `[${this.title}](${this.url})`;
+
         const length = this.length ?? 0;
         const min = Math.floor(length / 60);
         const sec = length - min * 60;

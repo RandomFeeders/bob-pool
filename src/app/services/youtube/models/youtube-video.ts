@@ -1,4 +1,4 @@
-import { videoInfo } from 'ytdl-core';
+import { videoInfo } from '@distube/ytdl-core';
 import { Item as ytsrItem } from 'ytsr';
 import { Item as ytplItem } from 'ytpl';
 import { YoutubeChannel } from './youtube-channel';

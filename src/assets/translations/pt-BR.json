@@ -43,7 +43,9 @@
             "name": "tocar",
             "description": "Me faz começar a tocar uma música no canal de voz atual.",
             "data": {
-                "embed_title": "🎶 Música Adicionada",
+                "embed_track_title": "🎶 Música Adicionada",
+                "embed_playlist_title": "🎶 Playlist Adicionada",
+                "embed_playlist_description": "Adicionado `{{count}}` músicas de {{playlist}}.",
                 "embed_footer": "Pedida por {{tag}}"
             },
             "options": {
@@ -169,10 +171,6 @@
             "next": {
                 "name": "proximo",
                 "description": "Coloca a música selecionada como próxima da fila.",
-                "data": {
-                    "embed_title": "🎶 Música Adicionada",
-                    "embed_footer": "Pedida por {{tag}}"
-                },
                 "options": {
                     "query": {
                         "name": "busca",
@@ -183,10 +181,6 @@
             "clear": {
                 "name": "limpo",
                 "description": "Me faz limpar a fila atual e começar a tocar uma música no canal de voz atual.",
-                "data": {
-                    "embed_title": "🎶 Música Adicionada",
-                    "embed_footer": "Pedida por {{tag}}"
-                },
                 "options": {
                     "query": {
                         "name": "busca",

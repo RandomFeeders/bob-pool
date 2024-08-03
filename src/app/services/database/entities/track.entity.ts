@@ -76,6 +76,13 @@ export class Track {
     })
     public artist?: string;
 
+    @Column({
+        name: 'order',
+        type: 'integer',
+        nullable: true,
+    })
+    public order?: number;
+
     public toString(): string {
         const length = this.length ?? 0;
         const min = Math.floor(length / 60);

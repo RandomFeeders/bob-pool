@@ -3,7 +3,7 @@ import { LocalizedError } from '@app/models/locale/localized-error';
 import { DiscordVoiceService } from '@app/services/discord/discord-voice';
 import { LocaleService } from '@app/services/locale/locale.service';
 import { Injectable, Scope } from '@nestjs/common';
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, Colors, ComponentType, EmbedBuilder } from 'discord.js';
 
 const MAX_EMBED_DESCRIPTION_LENGTH = 4096;
 const COLLECTOR_TIMEOUT = 120000;
@@ -41,6 +41,7 @@ export class QueueCommand implements DiscordCommand {
 
         const queueEmbed = new EmbedBuilder({
             title: this.localeService.translate('commands.queue.data.embed_title', interaction.member.locale),
+            color: Colors.Grey,
         });
 
         if (voiceData.queue.length === 0) {
