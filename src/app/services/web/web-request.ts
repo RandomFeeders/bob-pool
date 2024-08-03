@@ -84,6 +84,11 @@ export class WebRequest {
         return this.withAuth('Bearer', jwtToken);
     }
 
+    public withHeaders(headers: OutgoingHttpHeaders): WebRequest {
+        this.options.headers = headers;
+        return this;
+    }
+
     private get request() {
         switch (this.url.protocol) {
             case 'https':
